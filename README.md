@@ -1,2 +1,2 @@
 # Notepy
-Simply Notepad, but in python
+## Work in progress
