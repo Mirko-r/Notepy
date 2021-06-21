@@ -10,7 +10,7 @@ Notepy is a fully-featured Notepad Python app
   $ pip install -r requirements .txt
   $ python notepy.py
 ```
-<h3>WINDOWS<h/3>
+<h3>WINDOWS</h3>
 
 Download exe from <a href="https://github.com/Mirko-r/Notepy/releases/tag/1.0">release page</a>
 
