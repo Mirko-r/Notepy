@@ -12,5 +12,5 @@ Notepy is a full-featured Notepad Python app
 ```
 <h3>WINDOWS</h3>
 
-Download exe from <a href="https://github.com/Mirko-r/Notepy/releases/tag/1.0">release page</a>
+Download exe from <a href="https://github.com/Mirko-r/Notepy/releases/">release page</a>
 
