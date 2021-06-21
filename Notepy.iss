@@ -2,18 +2,18 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Notepy"
-#define MyAppVersion "1.0"
+#define MyAppVersion "1.1"
 #define MyAppPublisher "Mirko Rovere"
 #define MyAppURL "https://mirko-r.github.io"
 #define MyAppExeName "notepy.exe"
-#define MyAppAssocName "Txt file"
+#define MyAppAssocName "Txt files"
 #define MyAppAssocExt ".txt"
 #define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{3A0CDAF7-B236-4C07-907E-A1804E76ABA0}
+AppId={{68112FB4-BC4E-4B2D-9296-89DFD776D83C}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -27,7 +27,7 @@ DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 OutputDir=C:\Users\04mir\Desktop
-OutputBaseFilename=mysetup
+OutputBaseFilename=Notepy
 SetupIconFile=C:\Users\04mir\output\notepy\notepy.ico
 Compression=lzma
 SolidCompression=yes
@@ -41,7 +41,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "C:\Users\04mir\output\notepy\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\04mir\output\notepy - Copia\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\04mir\output\notepy\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
