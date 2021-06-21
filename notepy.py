@@ -181,7 +181,7 @@ class Format():
         self.text.insert(INSERT, date, "a")
 
 def showAbout():
-    messagebox.showinfo("About Notepy", "Notepy\n By Mirko Rovere")
+    messagebox.showinfo("About Notepy v1.1", "Notepy v1.1\nThe cose is written totally in python\nThe source code is open,\nyou can see it on GitHub: Mirko-r/Notepy\n\nBy Mirko Rovere")
 
 
 root = Tk()
