@@ -6,17 +6,18 @@ from tkinter.ttk import *
 from tkinter.font import Font, families
 from tkinter.colorchooser import askcolor
 from tkinter.scrolledtext import *
-from tkinter import Scrollbar, Text, messagebox, Menu, ttk
+from tkinter import Scrollbar, Text, messagebox, Menu
 import time
 
 class File(): ## File menu
-    def newFile(self):
+
+    def newFile(self, *args):
         self.filename = "Untitled"
         self.text.delete(0.0, END)
         self.status_bar.config(text = "New file open  ")
         self.root.title("Notepy - " + self.filename)
 
-    def saveFile(self):
+    def saveFile(self, *args):
         try:
             t = self.text.get(0.0, END)
             f = open(self.filename, 'w')
@@ -26,7 +27,7 @@ class File(): ## File menu
         except:
             self.saveAs()
 
-    def saveAs(self):
+    def saveAs(self, *args):
         f = asksaveasfile(mode='w', defaultextension='.txt')
         t = self.text.get(0.0, END)
         try:
@@ -34,7 +35,7 @@ class File(): ## File menu
         except:
             showerror(title="Error", message="Unable to save file...")
 
-    def openFile(self):
+    def openFile(self, *args):
         f = askopenfile(mode='r')
         self.filename = f.name
         t = f.read()
@@ -43,7 +44,7 @@ class File(): ## File menu
         self.status_bar.config(text = "File opened  ")
         self.root.title("Notepy - " + self.filename)
 
-    def quit(self):
+    def quit(self, *args):
         entry = askyesno(title="Quit", message="Are you sure you want to quit?")
         if entry == True:
             self.root.destroy()
@@ -179,10 +180,44 @@ class Format():
         year = str(full_date.tm_year)
         date = day + '/' + month + '/' + year
         self.text.insert(INSERT, date, "a")
+    
+    def addHour(self):
+        full_date = time.localtime()
+        hour = str(full_date.tm_hour)
+        min = str(full_date.tm_min)
+        date = hour + ':' + min 
+        self.text.insert(INSERT, date, "a")
 
+
+class Revision():
+    def __init__(self, text):
+        self.text = text
+
+    def words_count(self):
+        t = self.text.get(0.0, END)
+        words = [w for w in t.split(' ') if w!='\n']
+        word_count = len(words)
+        messagebox.showinfo("Word Count", "word count: {:,d}".format(word_count))
+    
+    def chars_count(self):
+        text_var = self.text.get(1.0, END)
+        word_list = text_var.split('\n')
+        count = 0
+        for x in word_list:
+            if x != "":
+                count += len(x)
+        messagebox.showinfo("Character Count ", "characters count: {:,d}".format(count))
+        
 def showAbout():
-    messagebox.showinfo("About Notepy v1.1", "Notepy v1.1\nThe cose is written totally in python\nThe source code is open,\nyou can see it on GitHub: Mirko-r/Notepy\n\nBy Mirko Rovere")
+    messagebox.showinfo("About Notepy v1.1", "Notepy v1.1\nThe code is written totally in python\nThe source code is open,\nyou can see it on GitHub: Mirko-r/Notepy\n\nBy Mirko Rovere")
 
+def keyb_short():
+    messagebox.showinfo(
+                        "Keyboard Shortcut", "Ctrl+b = Bold\nCtrl+i = Italic\nCtrl+u = Underline\nCtrl+t = Overstrike\n\n"+
+                        "Ctrl+z = Undo\nCtrl+y = Redo\nCtrl+f = Find\nCtrl+a = Select all\n\n"+
+                        "Ctrl+n = New file\nCtrl+o = Open file\nCtrl+s = Save file\nCtrl+Alt+s = Save file as\n\n"+
+                        "Ctrl+q = Quit"
+                        )
 
 root = Tk()
 
@@ -190,7 +225,6 @@ root.title("Notepy")
 root.geometry("1200x600")
 root.minsize(width=600, height=600)
 root.iconbitmap("notepy.ico")
-
 status_bar = Label(root, text = 'Ready   ', anchor = E)
 status_bar.pack( fill = "x", side = "bottom", ipady = 4 ) 
 
@@ -200,6 +234,7 @@ scrollbar.pack( side = RIGHT, fill = Y)
 text = Text(root, state='normal', width=400, height=400, wrap='word', pady=2, padx=3, undo=True, selectbackground = "yellow", selectforeground = "black",)
 text.pack(fill=Y, expand=1)
 text.config(yscrollcommand= scrollbar.set)
+
 text.focus_set()
 
 scrollbar.config(command = text.yview)
@@ -228,20 +263,6 @@ editmenu.add_separator()
 editmenu.add_command(label="Select All", command=objEdit.selectAll, accelerator="Ctrl+A")
 menubar.add_cascade(label="Edit", menu=editmenu)
 
-#Some edit menu keyboard shortcut
-root.bind_all("<Control-z>", objEdit.undo)
-root.bind_all("<Control-y>", objEdit.redo)
-root.bind_all("<Control-f>", objEdit.find)
-root.bind_all("Control-a", objEdit.selectAll)
-
-#Show little actions menu on right Click
-objEdit.rightClick.add_command(label="Copy", command=objEdit.copy)
-objEdit.rightClick.add_command(label="Cut", command=objEdit.cut)
-objEdit.rightClick.add_command(label="Paste", command=objEdit.paste)
-objEdit.rightClick.add_separator()
-objEdit.rightClick.add_command(label="Select All", command=objEdit.selectAll)
-objEdit.rightClick.bind("<Control-q>", objEdit.selectAll)
-
 objFormat = Format(text)
 
 fontoptions = families(root)
@@ -269,19 +290,40 @@ formatMenu.add_command(label="Italic", command=objFormat.italic, accelerator="Ct
 formatMenu.add_command(label="Underline", command=objFormat.underline, accelerator="Ctrl+U")
 formatMenu.add_command(label="Overstrike", command=objFormat.overstrike, accelerator="Ctrl+T")
 formatMenu.add_command(label="Add Date", command=objFormat.addDate)
+formatMenu.add_command(label="Add Hour", command=objFormat.addHour)
 menubar.add_cascade(label="Format", menu=formatMenu)
 
-#Some format menu keyboard shortcut
+#Format menu keyboard shortcut
 root.bind_all("<Control-b>", objFormat.bold)
 root.bind_all("<Control-i>", objFormat.italic)
 root.bind_all("<Control-u>", objFormat.underline)
-root.bind_all("<Control-T>", objFormat.overstrike)
+root.bind_all("<Control-t>", objFormat.overstrike)
+
+#Edit menu keyboard shortcut
+root.bind_all("<Control-z>", objEdit.undo)
+root.bind_all("<Control-y>", objEdit.redo)
+root.bind_all("<Control-f>", objEdit.find)
+root.bind_all("Control-a", objEdit.selectAll)
+
+#File menu keyboard shortcut
+root.bind_all("<Control-n>", objFile.newFile)
+root.bind_all("<Control-o>", objFile.openFile)
+root.bind_all("<Control-s>", objFile.saveFile)
+root.bind_all("<Control-Alt-s>", objFile.saveAs)
+root.bind_all("<Control-q>", objFile.quit)
 
 root.grid_columnconfigure(0, weight=1)
 root.resizable(True, True)
 
-helpmenu = Menu(menubar, tearoff=False)
+revisionmenu = Menu(menubar, tearoff=False) ## Revision menu gui
+objRevision = Revision(text)
+revisionmenu.add_command(label="Count Words", command=objRevision.words_count)
+revisionmenu.add_command(label="Count Characters", command=objRevision.chars_count)
+menubar.add_cascade(label=" Revision ", menu=revisionmenu)
+
+helpmenu = Menu(menubar, tearoff=False) # Help menu gui
 helpmenu.add_command(label = 'About', command = showAbout)
+helpmenu.add_command(label = 'Shortcut', command = keyb_short)
 menubar.add_cascade(label="Help", menu=helpmenu)
 
 root.config(menu=menubar)
