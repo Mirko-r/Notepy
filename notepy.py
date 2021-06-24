@@ -7,7 +7,11 @@ from tkinter.font import Font, families
 from tkinter.colorchooser import askcolor
 from tkinter.scrolledtext import *
 from tkinter import Scrollbar, Text, messagebox, Menu
+from idlelib.percolator import Percolator
+from idlelib.colorizer import ColorDelegator
 import time
+import readtime
+import os
 
 class File(): ## File menu
 
@@ -37,11 +41,12 @@ class File(): ## File menu
 
     def openFile(self, *args):
         f = askopenfile(mode='r')
+        self.filename, file_extension = os.path.splitext(f.name)
         self.filename = f.name
         t = f.read()
         self.text.delete(0.0, END)
         self.text.insert(0.0, t)
-        self.status_bar.config(text = "File opened  ")
+        self.status_bar.config(text = "File opened  extension : "+file_extension)
         self.root.title("Notepy - " + self.filename)
 
     def quit(self, *args):
@@ -78,6 +83,9 @@ class Edit(): # Edit menu
         self.text.see(INSERT)
         self.status_bar.config(text = "Ready  ")
 
+    def delete_all(self, *args):
+	    self.text.delete(1.0, END)
+
     def undo(self, *args):
         self.text.edit_undo()
         self.status_bar.config(text = "Undo  ")
@@ -100,7 +108,7 @@ class Edit(): # Edit menu
                 idx = lastidx
             self.text.tag_config('found', foreground='white', background='blue')
             self.status_bar.config(text = "Matched search in blue  ")
-
+        
     def __init__(self, text, root, status_bar):
         self.clipboard = None
         self.text = text
@@ -188,8 +196,7 @@ class Format():
         date = hour + ':' + min 
         self.text.insert(INSERT, date, "a")
 
-
-class Revision():
+class Revision(): # Revision menu
     def __init__(self, text):
         self.text = text
 
@@ -207,14 +214,19 @@ class Revision():
             if x != "":
                 count += len(x)
         messagebox.showinfo("Character Count ", "characters count: {:,d}".format(count))
+
+    def readtime(self):
+        result = str(readtime.of_text(self.text.get(0.0, END)))
+        messagebox.showinfo("Read Time", "Time :" + result)
         
 def showAbout():
-    messagebox.showinfo("About Notepy v1.1", "Notepy v1.1\nThe code is written totally in python\nThe source code is open,\nyou can see it on GitHub: Mirko-r/Notepy\n\nBy Mirko Rovere")
+    messagebox.showinfo("About Notepy v1.2", "Notepy v1.2\nThe code is written totally in python\nThe source code is open,\nyou can see it on GitHub: Mirko-r/Notepy\n\nBy Mirko Rovere")
+
 
 def keyb_short():
     messagebox.showinfo(
                         "Keyboard Shortcut", "Ctrl+b = Bold\nCtrl+i = Italic\nCtrl+u = Underline\nCtrl+t = Overstrike\n\n"+
-                        "Ctrl+z = Undo\nCtrl+y = Redo\nCtrl+f = Find\nCtrl+a = Select all\n\n"+
+                        "Ctrl+c = Copy\nCtrl+x = Cut\nCtrl+v = Paste\nCtrl+z = Undo\nCtrl+y = Redo\nCtrl+f = Find\nCtrl+a = Select all\nCtrl+d = Delete all\n\n"+
                         "Ctrl+n = New file\nCtrl+o = Open file\nCtrl+s = Save file\nCtrl+Alt+s = Save file as\n\n"+
                         "Ctrl+q = Quit"
                         )
@@ -236,11 +248,8 @@ text.pack(fill=Y, expand=1)
 text.config(yscrollcommand= scrollbar.set)
 
 text.focus_set()
-
 scrollbar.config(command = text.yview)
-
 menubar = Menu(root)
-
 filemenu = Menu(menubar, tearoff=False) ## File menu gui
 objFile = File(text, root, status_bar)
 filemenu.add_command(label=" New" , command=objFile.newFile)
@@ -253,14 +262,15 @@ menubar.add_cascade(label=" File ", menu=filemenu)
 
 editmenu = Menu(menubar, tearoff=False) # Edit menu gui
 objEdit = Edit(text, root, status_bar)
-editmenu.add_command(label="Copy", command=objEdit.copy, accelerator="Ctrl+C")
-editmenu.add_command(label="Cut", command=objEdit.cut, accelerator="Ctrl+X")
-editmenu.add_command(label="Paste", command=objEdit.paste, accelerator="Ctrl+V")
-editmenu.add_command(label="Undo", command=objEdit.undo, accelerator="Ctrl+Z")
-editmenu.add_command(label="Redo", command=objEdit.redo, accelerator="Ctrl+Y")
-editmenu.add_command(label="Find", command=objEdit.find, accelerator="Ctrl+F")
+editmenu.add_command(label="Copy", command=objEdit.copy)
+editmenu.add_command(label="Cut", command=objEdit.cut)
+editmenu.add_command(label="Paste", command=objEdit.paste)
+editmenu.add_command(label="Undo", command=objEdit.undo)
+editmenu.add_command(label="Redo", command=objEdit.redo)
+editmenu.add_command(label="Find", command=objEdit.find)
 editmenu.add_separator()
-editmenu.add_command(label="Select All", command=objEdit.selectAll, accelerator="Ctrl+A")
+editmenu.add_command(label="Select All", command=objEdit.selectAll)
+editmenu.add_command(label="Delete All", command=objEdit.delete_all)
 menubar.add_cascade(label="Edit", menu=editmenu)
 
 objFormat = Format(text)
@@ -285,10 +295,10 @@ formatMenu.add_command(label="Change Background", command=objFormat.changeBg)
 formatMenu.add_command(label="Change Font Color", command=objFormat.changeFg)
 formatMenu.add_cascade(label="Font", underline=0, menu=fsubmenu)
 formatMenu.add_cascade(label="Size", underline=0, menu=ssubmenu)
-formatMenu.add_command(label="Bold", command=objFormat.bold, accelerator="Ctrl+B")
-formatMenu.add_command(label="Italic", command=objFormat.italic, accelerator="Ctrl+I")
-formatMenu.add_command(label="Underline", command=objFormat.underline, accelerator="Ctrl+U")
-formatMenu.add_command(label="Overstrike", command=objFormat.overstrike, accelerator="Ctrl+T")
+formatMenu.add_command(label="Bold", command=objFormat.bold)
+formatMenu.add_command(label="Italic", command=objFormat.italic)
+formatMenu.add_command(label="Underline", command=objFormat.underline)
+formatMenu.add_command(label="Overstrike", command=objFormat.overstrike)
 formatMenu.add_command(label="Add Date", command=objFormat.addDate)
 formatMenu.add_command(label="Add Hour", command=objFormat.addHour)
 menubar.add_cascade(label="Format", menu=formatMenu)
@@ -304,6 +314,7 @@ root.bind_all("<Control-z>", objEdit.undo)
 root.bind_all("<Control-y>", objEdit.redo)
 root.bind_all("<Control-f>", objEdit.find)
 root.bind_all("Control-a", objEdit.selectAll)
+root.bind_all("<Control-d>", objEdit.delete_all)
 
 #File menu keyboard shortcut
 root.bind_all("<Control-n>", objFile.newFile)
@@ -319,6 +330,7 @@ revisionmenu = Menu(menubar, tearoff=False) ## Revision menu gui
 objRevision = Revision(text)
 revisionmenu.add_command(label="Count Words", command=objRevision.words_count)
 revisionmenu.add_command(label="Count Characters", command=objRevision.chars_count)
+revisionmenu.add_command(label="Calculate read time", command=objRevision.readtime)
 menubar.add_cascade(label=" Revision ", menu=revisionmenu)
 
 helpmenu = Menu(menubar, tearoff=False) # Help menu gui
@@ -327,5 +339,6 @@ helpmenu.add_command(label = 'Shortcut', command = keyb_short)
 menubar.add_cascade(label="Help", menu=helpmenu)
 
 root.config(menu=menubar)
+Percolator(text).insertfilter(ColorDelegator())
 
 root.mainloop()
