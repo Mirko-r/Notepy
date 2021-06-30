@@ -5,4 +5,3 @@ os-sys
 idlelib
 textblob
 webbrowser
-lazy_imports
