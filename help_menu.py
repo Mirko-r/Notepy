@@ -1,4 +1,5 @@
-from imports.imports import *
+from tkinter.messagebox import *
+from tkinter import messagebox, Menu
 
 class Help():
     def showAbout():
