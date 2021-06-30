@@ -1,4 +1,11 @@
-from imports.imports import *
+from tkinter import *
+from tkinter.filedialog import *
+from tkinter.messagebox import *
+from tkinter.simpledialog import *
+from tkinter.ttk import *
+from tkinter.scrolledtext import *
+from tkinter import Scrollbar, Text, messagebox, Menu
+import os
 
 class File(): ## File menu
 
