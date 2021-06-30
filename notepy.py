@@ -1,4 +1,10 @@
-from imports.imports import *
+from tkinter import *
+from tkinter.filedialog import *
+from tkinter.messagebox import *
+from tkinter.simpledialog import *
+from tkinter.ttk import *
+from idlelib.percolator import Percolator
+from idlelib.colorizer import ColorDelegator
 import help_menu
 import revision_menu
 import file_menu
@@ -14,7 +20,7 @@ root.iconbitmap("notepy.ico")
 status_bar = Label(root, text = 'Ready   ', anchor = E)
 status_bar.pack( fill = "x", side = "bottom", ipady = 4 ) 
 
-scrollbar = Scrollbar(root, bg = "grey")
+scrollbar = Scrollbar(root)
 scrollbar.pack( side = RIGHT, fill = Y)
 
 text = Text(root, state='normal', width=400, height=400, wrap='word', pady=2, padx=3, undo=True, selectbackground = "yellow", selectforeground = "black",)
