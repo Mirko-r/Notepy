@@ -1,4 +1,8 @@
 tkinter
 time
+readtime
 os-sys
 idlelib
+textblob
+webbrowser
+lazy_imports
