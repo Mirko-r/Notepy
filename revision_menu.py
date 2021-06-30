@@ -1,4 +1,13 @@
-from imports.imports import *
+from tkinter import *
+from tkinter.filedialog import *
+from tkinter.messagebox import *
+from tkinter.simpledialog import *
+from tkinter.ttk import *
+from tkinter.scrolledtext import *
+from tkinter import Scrollbar, Text, messagebox, Menu
+from textblob import TextBlob
+import readtime
+import webbrowser
 
 class Revision(): # Revision menu
     def __init__(self, text, status_bar):
