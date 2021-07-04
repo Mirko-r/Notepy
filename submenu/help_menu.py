@@ -19,11 +19,17 @@ class Help():
                         "Ctrl+q = Quit"
                         )
 
+    def release():
+        messagebox.showinfo(
+            "Release Notes", 
+            "- All subprogram moved to submenu folder\n"
+        )
 def main(root, text, menubar):
     
     helpmenu = Menu(menubar, tearoff=False) # Help menu gui
     helpmenu.add_command(label = 'About', command = Help.showAbout)
     helpmenu.add_command(label = 'Shortcut', command = Help.keyb_short)
+    helpmenu.add_command(label = 'Release notes', command = Help.release)
     menubar.add_cascade(label="Help", menu=helpmenu)
 
     root.config(menu=menubar)
