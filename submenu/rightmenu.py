@@ -2,13 +2,9 @@ from tkinter import Menu, messagebox
 from submenu import format_menu, edit_menu, revision_menu
 
 def main(root, text, menubar, status_bar):
-    edit_menu.main(root, text, menubar, status_bar)
+
     objEdit = edit_menu.Edit(text, root, status_bar)
-
-    format_menu.main(root, text, menubar, status_bar)
     objFormat = format_menu.Format(text)
-
-    revision_menu.main(root, text, menubar, status_bar)
     objRevision = revision_menu.Revision(text, status_bar)
 
     m = Menu(root, tearoff = 0) #menu rightclick
