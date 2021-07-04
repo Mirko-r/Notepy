@@ -25,7 +25,8 @@ class Help():
             "- All subprogram moved to submenu folder\n"+
             "- Added release notes in help menu\n"+
             "- All keyboard shortcuts moved into the membership file\n"+
-            "- Right menu now has its own file"
+            "- Right menu now has its own file\n"+
+            "- Icons moved into icon folder"
         )
         
 def main(root, text, menubar):
