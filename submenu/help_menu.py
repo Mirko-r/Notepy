@@ -24,7 +24,7 @@ class Help():
             "Release Notes for version 2.0", 
             "- All subprogram moved to submenu folder\n"+
             "- Added release notes in help menu\n"+
-            "- All keyboard shortcuts moved into the membership file"+
+            "- All keyboard shortcuts moved into the membership file\n"+
             "- Right menu now has its own file"
         )
         
