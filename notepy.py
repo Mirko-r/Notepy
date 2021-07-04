@@ -5,7 +5,7 @@ from tkinter.simpledialog import *
 from tkinter.ttk import *
 from idlelib.percolator import Percolator
 from idlelib.colorizer import ColorDelegator
-from submenu import file_menu, format_menu, edit_menu, revision_menu, help_menu
+from submenu import file_menu, format_menu, edit_menu, revision_menu, help_menu, rightmmenu
 
 root = Tk()
 
@@ -39,27 +39,12 @@ objFormat = format_menu.Format(text)
 revision_menu.main(root, text, menubar, status_bar)
 objRevision = revision_menu.Revision(text, status_bar)
 
+rightmmenu.main(root, text, menubar, status_bar)
+
 help_menu.main(root, text, menubar)
 
 Percolator(text).insertfilter(ColorDelegator())
 root.grid_columnconfigure(0, weight=1)
 root.resizable(True, True)
-
-m = Menu(root, tearoff = 0) #menu rightclick
-m.add_command(label ="Cut", command=objEdit.cut)
-m.add_command(label ="Copy", command=objEdit.copy)
-m.add_command(label ="Paste", command=objEdit.paste)
-m.add_command(label="Find", command=objEdit.find)
-m.add_command(label="Add Date", command=objFormat.addDate)
-m.add_command(label="Add Hour", command=objFormat.addHour)
-m.add_command(label="Search on internet", command=objRevision.open_webb)
-
-def do_popup(event):
-    try:
-        m.tk_popup(event.x_root, event.y_root)
-    finally:
-        m.grab_release()
-
-text.bind("<Button-3>", do_popup)
 
 root.mainloop()
