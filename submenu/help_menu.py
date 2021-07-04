@@ -21,8 +21,8 @@ class Help():
 
     def release():
         messagebox.showinfo(
-            "Release Notes", 
-            "- All subprogram moved to submenu folder\n"
+            "Release Notes for version 2.0", 
+            "- All subprogram moved to submenu folder\n- Added release notes in help menu"
         )
 def main(root, text, menubar):
     
