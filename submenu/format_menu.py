@@ -90,6 +90,7 @@ class Format(): #Format menu
         date = hour + ':' + min 
         self.text.insert(INSERT, date, "a")
 
+
 def main(root, text, menubar, status_bar):
 
     objFormat = Format(text)
@@ -121,6 +122,12 @@ def main(root, text, menubar, status_bar):
     menubar.add_cascade(label="Format", menu=formatMenu)
 
     root.config(menu=menubar)
+    
+    #Format menu keyboard shortcut
+    root.bind_all("<Control-b>", objFormat.bold)
+    root.bind_all("<Control-i>", objFormat.italic)
+    root.bind_all("<Control-u>", objFormat.underline)
+    root.bind_all("<Control-t>", objFormat.overstrike)
 
 if __name__ == "__main__":
     messagebox.showerror("Eror", "Please run 'main.py'")
