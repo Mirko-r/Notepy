@@ -6,8 +6,10 @@ from tkinter.ttk import *
 from tkinter.scrolledtext import *
 from tkinter import Scrollbar, Text, messagebox, Menu
 from textblob import TextBlob
+from num2words import num2words
 import readtime
 import webbrowser
+import re
 
 class Revision(): # Revision menu
     def __init__(self, text, status_bar):
@@ -55,6 +57,22 @@ class Revision(): # Revision menu
         else:
             messagebox.showerror("Error", "No text selected")
 
+    def numtowords(self):
+        a = self.text.get(SEL_FIRST, SEL_LAST)
+        c = self.text.get(SEL_FIRST, SEL_LAST)
+        if self.text.tag_ranges(SEL):
+            a = int( re.match("^\d+", a).group() )
+            c = c.replace(str(a), "")
+            b = num2words(a) +c
+            entry = askyesno(title="Num to words", message="This function work only in English\n\n" + "\n\nContinue?")
+            if entry == True:
+                self.text.delete(1.0, END)
+                self.text.insert(1.0, b)
+                self.status_bar.config(text = "Num to words execute correctly  ")
+        else:
+            messagebox.showerror("Error", "No text selected")
+
+
 def main(root, text, menubar, status_bar):
     revisionmenu = Menu(menubar, tearoff=False) ## Revision menu gui
     objRevision = Revision(text, status_bar)
@@ -63,6 +81,7 @@ def main(root, text, menubar, status_bar):
     revisionmenu.add_command(label="Calculate read time", command=objRevision.readtime)
     revisionmenu.add_command(label="Search on Internet", command=objRevision.open_webb)
     revisionmenu.add_command(label="Correct text", command=objRevision.correct)
+    revisionmenu.add_command(label="Num to words", command=objRevision.numtowords)
     menubar.add_cascade(label=" Revision ", menu=revisionmenu)
     root.config(menu=menubar)
 
