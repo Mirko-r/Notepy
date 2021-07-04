@@ -5,11 +5,7 @@ from tkinter.simpledialog import *
 from tkinter.ttk import *
 from idlelib.percolator import Percolator
 from idlelib.colorizer import ColorDelegator
-import help_menu
-import revision_menu
-import file_menu
-import edit_menu
-import format_menu
+from submenu import file_menu, format_menu, edit_menu, revision_menu, help_menu
 
 root = Tk()
 
