@@ -63,16 +63,15 @@ class Edit(): # Edit menu
 
 def main(root, text, menubar, status_bar):
     editmenu = Menu(menubar, tearoff=False) # Edit menu gui
-    objEdit = Edit(text, root, status_bar)
-    editmenu.add_command(label="Copy", command=objEdit.copy)
-    editmenu.add_command(label="Cut", command=objEdit.cut)
-    editmenu.add_command(label="Paste", command=objEdit.paste)
-    editmenu.add_command(label="Undo", command=objEdit.undo)
-    editmenu.add_command(label="Redo", command=objEdit.redo)
-    editmenu.add_command(label="Find", command=objEdit.find)
+    editmenu.add_command(label="Copy", command=Edit.copy)
+    editmenu.add_command(label="Cut", command=Edit.cut)
+    editmenu.add_command(label="Paste", command=Edit.paste)
+    editmenu.add_command(label="Undo", command=Edit.undo)
+    editmenu.add_command(label="Redo", command=Edit.redo)
+    editmenu.add_command(label="Find", command=Edit.find)
     editmenu.add_separator()
-    editmenu.add_command(label="Select All", command=objEdit.selectAll)
-    editmenu.add_command(label="Delete All", command=objEdit.delete_all)
+    editmenu.add_command(label="Select All", command=Edit.selectAll)
+    editmenu.add_command(label="Delete All", command=Edit.delete_all)
     menubar.add_cascade(label="Edit", menu=editmenu)
     root.config(menu=menubar)
 
