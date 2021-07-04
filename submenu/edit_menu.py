@@ -76,6 +76,12 @@ def main(root, text, menubar, status_bar):
     menubar.add_cascade(label="Edit", menu=editmenu)
     root.config(menu=menubar)
 
+    #Edit menu keyboard shortcut
+    root.bind_all("<Control-y>", objEdit.undo)
+    root.bind_all("<Control-z>", objEdit.redo)
+    root.bind_all("<Control-f>", objEdit.find)
+    root.bind_all("Control-a", objEdit.selectAll)
+    root.bind_all("<Control-d>", objEdit.delete_all)
 
 if __name__ == "__main__":
     messagebox.showerror("Eror", "Please run 'main.py'")
