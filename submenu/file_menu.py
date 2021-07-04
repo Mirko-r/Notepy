@@ -66,6 +66,11 @@ def main(root, text, menubar, status_bar):
     menubar.add_cascade(label=" File ", menu=filemenu)
     root.config(menu=menubar)
 
+    #File menu keyboard shortcut
+    root.bind_all("<Control-n>", objFile.newFile)
+    root.bind_all("<Control-o>", objFile.openFile)
+    root.bind_all("<Control-s>", objFile.saveFile)
+    root.bind_all("<Control-q>", objFile.quit)
 
 if __name__ == "__main__":
     messagebox.showerror("Eror", "Please run 'main.py'")
