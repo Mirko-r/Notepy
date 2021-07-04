@@ -4,8 +4,8 @@ from tkinter import messagebox, Menu
 class Help():
     def showAbout():
         messagebox.showinfo(
-                        "About Notepy v1.5", 
-                        "Notepy v1.5\nThe code is written totally in python\n"+
+                        "About Notepy v2.0", 
+                        "Notepy v2.0\nThe code is written totally in python\n"+
                         "The source code is open,\n"+
                         "you can see it on GitHub: Mirko-r/Notepy\n\n"+
                         "By Mirko Rovere"
