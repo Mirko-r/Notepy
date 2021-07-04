@@ -62,23 +62,4 @@ def do_popup(event):
 
 text.bind("<Button-3>", do_popup)
 
-#Format menu keyboard shortcut
-root.bind_all("<Control-b>", objFormat.bold)
-root.bind_all("<Control-i>", objFormat.italic)
-root.bind_all("<Control-u>", objFormat.underline)
-root.bind_all("<Control-t>", objFormat.overstrike)
-
-#Edit menu keyboard shortcut
-root.bind_all("<Control-y>", objEdit.undo)
-root.bind_all("<Control-z>", objEdit.redo)
-root.bind_all("<Control-f>", objEdit.find)
-root.bind_all("Control-a", objEdit.selectAll)
-root.bind_all("<Control-d>", objEdit.delete_all)
-
-#File menu keyboard shortcut
-root.bind_all("<Control-n>", objFile.newFile)
-root.bind_all("<Control-o>", objFile.openFile)
-root.bind_all("<Control-s>", objFile.saveFile)
-root.bind_all("<Control-q>", objFile.quit)
-
 root.mainloop()
