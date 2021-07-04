@@ -5,7 +5,7 @@ from tkinter.simpledialog import *
 from tkinter.ttk import *
 from idlelib.percolator import Percolator
 from idlelib.colorizer import ColorDelegator
-from submenu import file_menu, format_menu, edit_menu, revision_menu, help_menu, rightmmenu
+from submenu import file_menu, format_menu, edit_menu, revision_menu, help_menu, rightmenu
 
 root = Tk()
 
@@ -39,7 +39,7 @@ objFormat = format_menu.Format(text)
 revision_menu.main(root, text, menubar, status_bar)
 objRevision = revision_menu.Revision(text, status_bar)
 
-rightmmenu.main(root, text, menubar, status_bar)
+rightmenu.main(root, text, menubar, status_bar)
 
 help_menu.main(root, text, menubar)
 
