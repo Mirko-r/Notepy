@@ -26,7 +26,8 @@ class Help():
             "- Added release notes in help menu\n"+
             "- All keyboard shortcuts moved into the membership file\n"+
             "- Right menu now has its own file\n"+
-            "- Icons moved into icon folder"
+            "- Icons moved into icon folder\n"+
+            "- Added num to words function on Revision menu"
         )
         
 def main(root, text, menubar):
