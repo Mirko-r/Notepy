@@ -15,6 +15,7 @@ def main(root, text, menubar, status_bar):
     m.add_command(label="Add Date", command=objFormat.addDate)
     m.add_command(label="Add Hour", command=objFormat.addHour)
     m.add_command(label="Search on internet", command=objRevision.open_webb)
+    m.add_command(label="Num to words", command=objRevision.numtowords)
 
     def do_popup(event):
         try:
