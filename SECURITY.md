@@ -14,5 +14,5 @@ currently being supported with security updates.
 
 ## Reporting a Vulnerability
 
-To report a vulerability send me an email from <a href="https://mirko-r.github.io">this site</a>
+To report a vulnerability send me an email from <a href="https://mirko-r.github.io">this site</a>
 or create a new issue
