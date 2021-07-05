@@ -42,7 +42,7 @@ class Revision(): # Revision menu
             a = self.text.get(SEL_FIRST, SEL_LAST)
             if self.text.tag_ranges(SEL):
                 b = TextBlob(a)
-                corrected_text = str(b.correct())
+                corrected_text = str(b.correct(),)
                 entry = askyesno(title="Correction", message="Suggest corrections :\n\n" + corrected_text + "\n\nContinue?")
                 if entry == True:
                     self.text.delete(1.0, END)
@@ -59,7 +59,7 @@ class Revision(): # Revision menu
             messagebox.showerror("Error", "No text selected")
 
     def numtowords(self):
-        language = detect(self.text.get(SEL_FIRST, SEL_LAST))
+        language = detect(self.text.get(1.0, END))
         a = self.text.get(SEL_FIRST, SEL_LAST)
         c = self.text.get(SEL_FIRST, SEL_LAST)
         if self.text.tag_ranges(SEL):
