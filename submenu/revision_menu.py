@@ -66,8 +66,8 @@ class Revision(): # Revision menu
             a = int( re.match("^\d+", a).group() )
             c = c.replace(str(a), "")
             b = num2words(a, lang=language) +c
-            self.text.delete(1.0, END)
-            self.text.insert(1.0, b)
+            self.text.delete(SEL_FIRST, SEL_LAST)
+            self.text.insert(INSERT, b)
             self.status_bar.config(text = "Num to words execute correctly  ")
         else:
             messagebox.showerror("Error", "No text selected")
