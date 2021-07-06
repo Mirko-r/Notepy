@@ -16,20 +16,23 @@ class Help():
                         "Keyboard Shortcut", "Ctrl+b = Bold\nCtrl+i = Italic\nCtrl+u = Underline\nCtrl+t = Overstrike\n\n"+
                         "Ctrl+c = Copy\nCtrl+x = Cut\nCtrl+v = Paste\nCtrl+y = Undo\nCtrl+z = Redo\nCtrl+f = Find\nCtrl+a = Select all\nCtrl+d = Delete all\n\n"+
                         "Ctrl+n = New file\nCtrl+o = Open file\nCtrl+s = Save file\n\n"+
-                        "Ctrl+q = Quit"
+                        "Ctrl+q = Quit\n\n"+
+                        "Ctrl+t = Run terminal"
                         )
 
     def release():
         messagebox.showinfo(
             "Release Notes for version 2.0", 
-            "What's new:\n"
-            "- All subprogram moved to submenu folder\n\n"+
-            "- Added release notes in help menu\n\n"+
-            "- All keyboard shortcuts moved into the membership file\n\n"+
-            "- Right menu now has its own file\n\n"+
-            "- Icons moved into icon folder\n\n"+
-            "- Added num to words function on Revision menu and on Right click menu\n\n"+
-            "- Better Save As and Open file"
+            "What's new:\n\n"
+            "- All subprogram moved to submenu folder\n"+
+            "- Added release notes in help menu\n"+
+            "- All keyboard shortcuts moved into the membership file\n"+
+            "- Right menu now has its own file\n"+
+            "- Icons moved into icon folder\n"+
+            "- Added num to words function on Revision menu and on Right click menu\n"+
+            "- Better Save As and Open file\n"+
+            "- Added run terminal function\n"+
+            "- Added one shortcut"
         )
         
 def main(root, text, menubar):
