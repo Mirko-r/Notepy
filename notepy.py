@@ -6,8 +6,16 @@ from tkinter.ttk import *
 from idlelib.percolator import Percolator
 from idlelib.colorizer import ColorDelegator
 from submenu import file_menu, format_menu, edit_menu, revision_menu, help_menu, rightmenu
+import os
+from sys import platform
 
-
+def run_terminal():
+    if platform == 'darwin':
+        os.system('open -a Terminal -n')
+    elif platform == 'win32':
+        os.system('start cmd')
+    elif platform == 'linux':
+        os.system('gnome-terminal')
 
 root = Tk()
 
@@ -38,6 +46,8 @@ format_menu.main(root, text, menubar, status_bar)
 revision_menu.main(root, text, menubar, status_bar)
 
 rightmenu.main(root, text, menubar, status_bar)
+
+menubar.add_command(label="Run terminal", command=run_terminal)
 
 help_menu.main(root, text, menubar)
 
