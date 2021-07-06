@@ -10,7 +10,6 @@ from num2words import num2words
 import readtime
 import webbrowser
 import re
-from langdetect import detect
 
 class Revision(): # Revision menu
     def __init__(self, text, status_bar):
@@ -59,13 +58,14 @@ class Revision(): # Revision menu
             messagebox.showerror("Error", "No text selected")
 
     def numtowords(self):
-        language = detect(self.text.get(1.0, END))
+        #language = detect(self.text.get(1.0, END))
         a = self.text.get(SEL_FIRST, SEL_LAST)
         c = self.text.get(SEL_FIRST, SEL_LAST)
-        if self.text.tag_ranges(SEL):
+        entry = messagebox.askyesno("Attention", "This function work only in english\n\nContinue anyway?")
+        if self.text.tag_ranges(SEL) & entry == True:
             a = int( re.match("^\d+", a).group() )
             c = c.replace(str(a), "")
-            b = num2words(a, lang=language) +c
+            b = num2words(a) +c
             self.text.delete(SEL_FIRST, SEL_LAST)
             self.text.insert(INSERT, b)
             self.status_bar.config(text = "Num to words execute correctly  ")
