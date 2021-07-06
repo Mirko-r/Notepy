@@ -22,12 +22,14 @@ class Help():
     def release():
         messagebox.showinfo(
             "Release Notes for version 2.0", 
-            "- All subprogram moved to submenu folder\n"+
-            "- Added release notes in help menu\n"+
-            "- All keyboard shortcuts moved into the membership file\n"+
-            "- Right menu now has its own file\n"+
-            "- Icons moved into icon folder\n"+
-            "- Added num to words function on Revision menu and on Right click menu"
+            "What's new:\n"
+            "- All subprogram moved to submenu folder\n\n"+
+            "- Added release notes in help menu\n\n"+
+            "- All keyboard shortcuts moved into the membership file\n\n"+
+            "- Right menu now has its own file\n\n"+
+            "- Icons moved into icon folder\n\n"+
+            "- Added num to words function on Revision menu and on Right click menu\n\n"+
+            "- Better Save As and Open file"
         )
         
 def main(root, text, menubar):
