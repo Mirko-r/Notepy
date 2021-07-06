@@ -7,6 +7,8 @@ from idlelib.percolator import Percolator
 from idlelib.colorizer import ColorDelegator
 from submenu import file_menu, format_menu, edit_menu, revision_menu, help_menu, rightmenu
 
+
+
 root = Tk()
 
 root.title("Notepy")
@@ -28,22 +30,19 @@ scrollbar.config(command = text.yview)
 menubar = Menu(root)
 
 file_menu.main(root, text, menubar, status_bar)
-objFile = file_menu.File(text, root, status_bar)
 
 edit_menu.main(root, text, menubar, status_bar)
-objEdit = edit_menu.Edit(text, root, status_bar)
 
 format_menu.main(root, text, menubar, status_bar)
-objFormat = format_menu.Format(text)
 
 revision_menu.main(root, text, menubar, status_bar)
-objRevision = revision_menu.Revision(text, status_bar)
 
 rightmenu.main(root, text, menubar, status_bar)
 
 help_menu.main(root, text, menubar)
 
 Percolator(text).insertfilter(ColorDelegator())
+
 root.grid_columnconfigure(0, weight=1)
 root.resizable(True, True)
 
