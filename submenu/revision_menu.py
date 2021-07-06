@@ -62,13 +62,14 @@ class Revision(): # Revision menu
         a = self.text.get(SEL_FIRST, SEL_LAST)
         c = self.text.get(SEL_FIRST, SEL_LAST)
         entry = messagebox.askyesno("Attention", "This function work only in english\n\nContinue anyway?")
-        if self.text.tag_ranges(SEL) & entry == True:
-            a = int( re.match("^\d+", a).group() )
-            c = c.replace(str(a), "")
-            b = num2words(a) +c
-            self.text.delete(SEL_FIRST, SEL_LAST)
-            self.text.insert(INSERT, b)
-            self.status_bar.config(text = "Num to words execute correctly  ")
+        if self.text.tag_ranges(SEL):
+            if entry == True:
+                a = int( re.match("^\d+", a).group() )
+                c = c.replace(str(a), "")
+                b = num2words(a) +c
+                self.text.delete(SEL_FIRST, SEL_LAST)
+                self.text.insert(INSERT, b)
+                self.status_bar.config(text = "Num to words execute correctly  ")
         else:
             messagebox.showerror("Error", "No text selected")
 
