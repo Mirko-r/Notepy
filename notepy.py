@@ -9,7 +9,7 @@ from submenu import file_menu, format_menu, edit_menu, revision_menu, help_menu,
 import os
 from sys import platform
 
-def run_terminal():
+def run_terminal(*args):
     if platform == 'darwin':
         os.system('open -a Terminal -n')
     elif platform == 'win32':
@@ -55,5 +55,7 @@ Percolator(text).insertfilter(ColorDelegator())
 
 root.grid_columnconfigure(0, weight=1)
 root.resizable(True, True)
+
+root.bind_all("<Control-t>", run_terminal)
 
 root.mainloop()
