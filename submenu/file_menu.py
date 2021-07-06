@@ -26,7 +26,19 @@ class File(): ## File menu
             self.saveAs()
 
     def saveAs(self, *args):
-        f = asksaveasfile(mode='w', defaultextension='.txt')
+        f = asksaveasfilename(
+                    initialfile="Untitled.txt",
+                    defaultextension=".txt",
+                    filetypes=[
+                        ("All Files", "*.*"),
+                        ("Text Files", "*.txt"),
+                        ("Python Scripts", "*.py"),
+                        ("Markdown Documents", "*.md"),
+                        ("JavaScript Files", "*.js"),
+                        ("HTML Documents", "*.html"),
+                        ("CSS Documents", "*.css"),
+                    ],
+                )
         t = self.text.get(0.0, END)
         try:
             f.write(t.rstrip())
@@ -34,7 +46,18 @@ class File(): ## File menu
             showerror(title="Error", message="Unable to save file...")
 
     def openFile(self, *args):
-        f = askopenfile(mode='r')
+        f = askopenfilename(
+                defaultextension=".txt",
+                filetypes=[
+                    ("All Files", "*.*"),
+                    ("Text Files", "*.txt"),
+                    ("Python Scripts", "*.py"),
+                    ("Markdown Documents", "*.md"),
+                    ("JavaScript Files", "*.js"),
+                    ("HTML Documents", "*.html"),
+                    ("CSS Documents", "*.css"),
+                ],
+            )
         self.filename, file_extension = os.path.splitext(f.name)
         self.filename = f.name
         t = f.read()
@@ -42,7 +65,7 @@ class File(): ## File menu
         self.text.insert(0.0, t)
         self.status_bar.config(text = "File opened  extension : "+file_extension)
         self.root.title("Notepy - " + self.filename)
-
+        
     def quit(self, *args):
         entry = askyesno(title="Quit", message="Are you sure you want to quit?")
         if entry == True:
