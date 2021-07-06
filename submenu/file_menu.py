@@ -46,7 +46,7 @@ class File(): ## File menu
             showerror(title="Error", message="Unable to save file...")
 
     def openFile(self, *args):
-        f = askopenfilename(
+        f = askopenfile(
                 defaultextension=".txt",
                 filetypes=[
                     ("All Files", "*.*"),
