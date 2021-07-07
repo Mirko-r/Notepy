@@ -37,6 +37,8 @@ class File(): ## File menu
                         ("JavaScript Files", "*.js"),
                         ("HTML Documents", "*.html"),
                         ("CSS Documents", "*.css"),
+                        ("C Files", "*.c"), 
+                        ("C++ Files", "*.cpp")
                     ],
                 )
         t = self.text.get(0.0, END)
@@ -49,14 +51,16 @@ class File(): ## File menu
         f = askopenfile(
                 defaultextension=".txt",
                 filetypes=[
-                    ("All Files", "*.*"),
-                    ("Text Files", "*.txt"),
-                    ("Python Scripts", "*.py"),
-                    ("Markdown Documents", "*.md"),
-                    ("JavaScript Files", "*.js"),
-                    ("HTML Documents", "*.html"),
-                    ("CSS Documents", "*.css"),
-                ],
+                        ("All Files", "*.*"),
+                        ("Text Files", "*.txt"),
+                        ("Python Scripts", "*.py"),
+                        ("Markdown Documents", "*.md"),
+                        ("JavaScript Files", "*.js"),
+                        ("HTML Documents", "*.html"),
+                        ("CSS Documents", "*.css"),
+                        ("C Files", "*.c"), 
+                        ("C++ Files", "*.cpp")
+                    ],
             )
         self.filename, file_extension = os.path.splitext(f.name)
         self.filename = f.name
