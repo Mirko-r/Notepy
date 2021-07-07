@@ -6,4 +6,3 @@ idlelib
 textblob
 webbrowser
 num2words 
-langdetect
