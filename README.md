@@ -17,3 +17,4 @@ Download exe from <a href="https://github.com/Mirko-r/Notepy/releases/">release 
 <h3>TO BE ADDED</h3>
 <li><a href="https://github.com/jameslyons/pycipher">pycipher</a> module</li>
 <li><a href="https://github.com/mnmelo/lazy_import">lazy import</a> module</li>
+<li><a href="https://github.com/google/yapf">yapf</a> mdoule</li>
