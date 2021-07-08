@@ -26,24 +26,54 @@ class File(): ## File menu
             self.saveAs()
 
     def saveAs(self, *args):
-        f = asksaveasfilename(
+        f = asksaveasfile(
+                    mode="w",
                     initialfile="Untitled.txt",
                     defaultextension=".txt",
                     filetypes=[
                         ("All Files", "*.*"),
                         ("Text Files", "*.txt"),
-                        ("Python Scripts", "*.py"),
-                        ("Markdown Documents", "*.md"),
-                        ("JavaScript Files", "*.js"),
-                        ("HTML Documents", "*.html"),
-                        ("CSS Documents", "*.css"),
-                        ("C Files", "*.c"), 
-                        ("C++ Files", "*.cpp")
+                        ("Aspnetcorerazor", "*.cshtml;*.razor"),
+                        ("Batch", "*.bat;*.cmd"),
+                        ("C", "*.c;*.i"),
+                        ("C#", "*.cs;*.csx;*.cake"),
+                        ("C++", "*.cpp;*.cc;*.cxx;*.c++;*.hpp;*.hh;*.hxx;*.h++;*.h;*.ii"),
+                        ("Clojure", "*.clj;*.cljs;*.cljc;*.cljx;*.clojure;*.edn"),
+                        ("CoffeeScript", "*.coffee;*.cson;;*.iced"),
+                        ("CSCS", "*.cscs;*.mqs"),
+                        ("CSS", "*.css"),
+                        ("CUDA C++", "*.cu;*.cuh"),
+                        ("Dart", "*.dart"),
+                        ("Diff", "*.diff;*.patch;*.rej"),
+                        ("Docker", "*.dockerfile;*.containerfile"),
+                        ("F#", "*.fs;*.fsx;*.fsi;*.fsscript"),
+                        ("Go", "*.go"),
+                        ("Go Checksum File", "*.go.sum"),
+                        ("Go Module File", "*.go.mod;*.gopls.mod"),
+                        ("Groovy", "*.groovy;*.gvy;*.gradle;*.jenkinsfile;*.nf"),
+                        ("Handlebars", "*.handlebars;*.hbs;*.hjs"),
+                        ("HLSL", "*.hlsl;*.hlsli;*.fx;*.fxh;*.vsh;*.psh;*.cginc;*.compute"),
+                        ("HTML", "*.html;*.htm;*.shtml;*.xhtml;*.xht;*.mdoc;*.jsp;*.asp;*.aspx;*.jshtm"),
+                        ("Ignore", "*.gitignore_global;*.gitignore;*.npmignore"),
+                        ("Ini", "*.ini"),
+                        ("Java", "*.java;*.class;*.jav"),
+                        ("JavaScript", "*.js;*.es6;*.*mjs;*.cjs;*.pac"),
+                        ("JavaScript React", "*.jsx"),
+                        ("Jinja", "*.jinjia2;*.j2"),
+                        ("Json", "*.json;*.bowerrc;*.jscsrc;*.webmanifest;*.js.map;*.css.map;*.ts.map;*.har;*.jslintrc;*.jsonld"),
+                        ("JSON with Comments", "*.jsonc;*.eslintrc;*.eslintrc.json;*.jsfmtrc;*.jshintrc;*.srcrc;*.hintrc;*.babelrc;*.code-workspace;*.language-configuration.json"),
+                        ("Julia", "*.jl"),
+                        ("Julia Markdown", "*.jmd"),
+                        ("Jupyter", "*.ipynb"),
+                        ("Less", "*.less"),
+                        ("Log", "*.log;*.log.?"),
+                        ("Lua", "*.lua"),     
                     ],
                 )
         t = self.text.get(0.0, END)
         try:
             f.write(t.rstrip())
+            self.status_bar.config(text = "File saved  ")
         except:
             showerror(title="Error", message="Unable to save file...")
 
@@ -53,13 +83,28 @@ class File(): ## File menu
                 filetypes=[
                         ("All Files", "*.*"),
                         ("Text Files", "*.txt"),
-                        ("Python Scripts", "*.py"),
-                        ("Markdown Documents", "*.md"),
-                        ("JavaScript Files", "*.js"),
-                        ("HTML Documents", "*.html"),
-                        ("CSS Documents", "*.css"),
-                        ("C Files", "*.c"), 
-                        ("C++ Files", "*.cpp")
+                        ("Aspnetcorerazor", "*.cshtml;*.razor"),
+                        ("Batch", "*.bat;*.cmd"),
+                        ("C", "*.c;*.i"),
+                        ("C#", "*.cs;*.csx;*.cake"),
+                        ("C++", "*.cpp;*.cc;*.cxx;*.c++;*.hpp;*.hh;*.hxx;*.h++;*.h;*.ii"),
+                        ("Clojure", "*.clj;*.cljs;*.cljc;*.cljx;*.clojure;*.edn"),
+                        ("CoffeeScript", "*.coffee;*.cson;;*.iced"),
+                        ("CSCS", "*.cscs;*.mqs"),
+                        ("CSS", "*.css"),
+                        ("CUDA C++", "*.cu;*.cuh"),
+                        ("Dart", "*.dart"),
+                        ("Diff", "*.diff;*.patch;*.rej"),
+                        ("Docker", "*.dockerfile;*.containerfile"),
+                        ("F#", "*.fs;*.fsx;*.fsi;*.fsscript"),
+                        ("Go", "*.go"),
+                        ("Go Checksum File", "*.go.sum"),
+                        ("Go Module File", "*.go.mod;*.gopls.mod"),
+                        ("Groovy", "*.groovy;*.gvy;*.gradle;*.jenkinsfile;*.nf"),
+                        ("Handlebars", "*.handlebars;*.hbs;*.hjs"),
+                        ("HLSL", "*.hlsl;*.hlsli;*.fx;*.fxh;*.vsh;*.psh;*.cginc;*.compute"),
+                        ("HTML", "*.html;*.htm;*.shtml;*.xhtml;*.xht;*.mdoc;*.jsp;*.asp;*.aspx;*.jshtm"),
+                        ("Ignore", "*.gitignore_global;*.gitignore;*.npmignore"),
                     ],
             )
         self.filename, file_extension = os.path.splitext(f.name)
