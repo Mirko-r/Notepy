@@ -24,7 +24,9 @@ class Help():
         messagebox.showinfo(
             "Version 2.x", 
             "What's new:\n\n"+
-            "- Added support for open and saveAs C/C++ files"
+            "- Added support for open and saveAs a lot of filetypes"
+            "- Better SaveAs function"
+            "- Improved status bar"
         )
         
 def main(root, text, menubar):
