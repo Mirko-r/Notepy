@@ -90,6 +90,24 @@ class Format(): #Format menu
         date = hour + ':' + min 
         self.text.insert(INSERT, date, "a")
 
+    def left(self):
+        text_content = self.text.get(1.0, END)
+        self.text.tag_config(LEFT, justify=LEFT)
+        self.text.delete(1.0, END)
+        self.text.insert(INSERT, text_content, LEFT)
+
+    def center(self):
+        text_content = self.text.get(1.0, END)
+        self.text.tag_config(CENTER, justify=CENTER)
+        self.text.delete(1.0, END)
+        self.text.insert(INSERT, text_content, CENTER)
+
+    def right(self):
+        text_content = self.text.get(1.0, END)
+        self.text.tag_config(RIGHT, justify=RIGHT)
+        self.text.delete(1.0, END)
+        self.text.insert(INSERT, text_content, RIGHT)
+
 
 def main(root, text, menubar, status_bar):
 
@@ -98,21 +116,26 @@ def main(root, text, menubar, status_bar):
     fontoptions = families(root)
     font = Font(family="Arial", size=10)
     text.configure(font=font)
-
     formatMenu = Menu(menubar, tearoff=False)
+
     fsubmenu = Menu(formatMenu, tearoff=False) #Fonts submenu
     ssubmenu = Menu(formatMenu, tearoff=False) #Font size submenu
-
+    asubmenu = Menu(formatMenu, tearoff=False)
+    
     for option in fontoptions:
         fsubmenu.add_command(label=option, command=lambda option=option: font.configure(family=option))
     for value in range(1, 31):
         ssubmenu.add_command(label=str(value), command=lambda value=value: font.configure(size=value))
-
+    
+    asubmenu.add_command(label="Left", command=objFormat.left)
+    asubmenu.add_command(label="Right", command=objFormat.right)
+    asubmenu.add_command(label="Center", command=objFormat.center)
 
     formatMenu.add_command(label="Change Background", command=objFormat.changeBg)
     formatMenu.add_command(label="Change Font Color", command=objFormat.changeFg)
     formatMenu.add_cascade(label="Font", underline=0, menu=fsubmenu)
     formatMenu.add_cascade(label="Size", underline=0, menu=ssubmenu)
+    formatMenu.add_cascade(label="Align", underline=0, menu=asubmenu)
     formatMenu.add_command(label="Bold", command=objFormat.bold)
     formatMenu.add_command(label="Italic", command=objFormat.italic)
     formatMenu.add_command(label="Underline", command=objFormat.underline)
