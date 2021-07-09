@@ -20,7 +20,7 @@ class Ui_SplashScreen(object):
         self.dropShadowFrame = QFrame(self.centralwidget)
         self.dropShadowFrame.setObjectName(u"dropShadowFrame")
         self.dropShadowFrame.setStyleSheet(u"QFrame {	\n"
-"	background-color: rgb(56, 58, 89);	\n"
+"	background-color: rgb(255, 255, 255);	\n"
 "	color: rgb(220, 220, 220);\n"
 "	border-radius: 10px;\n"
 "}")
