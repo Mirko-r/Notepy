@@ -25,9 +25,10 @@ class Help():
             "Version 2.x", 
             "What's new:\n\n"+
             "- Added support for open and saveAs a lot of filetypes\n"
-            "- Better SaveAs function\n"
+            "- Better SaveAs and Open functions\n"
             "- Improved status bar\n"
             "- Now the program icon changes according to the extension of the file\n"
+            "- Added text align submenu on format menu\n"
         )
         
 def main(root, text, menubar):
