@@ -6,3 +6,4 @@ idlelib
 textblob
 webbrowser
 num2words 
+PySide2
