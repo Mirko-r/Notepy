@@ -27,7 +27,7 @@ class Help():
             "- Added support for open and saveAs a lot of filetypes\n"
             "- Better SaveAs function\n"
             "- Improved status bar\n"
-            "- Now the program icon changes according to the extension of the file that you open\n"
+            "- Now the program icon changes according to the extension of the file\n"
         )
         
 def main(root, text, menubar):
