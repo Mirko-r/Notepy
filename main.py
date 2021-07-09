@@ -1,20 +1,13 @@
 import sys
-import platform
-from PySide2 import QtCore, QtGui, QtWidgets
-from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
-from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
+from PySide2 import QtCore
+from PySide2.QtGui import  QColor
 from PySide2.QtWidgets import *
 ## ==> SPLASH SCREEN
 from ui_splash_screen import Ui_SplashScreen
 
+
 ## ==> GLOBALS
 counter = 0
-
-# YOUR APPLICATION
-#class MainWindow(QMainWindow):
-
-
-        # MAIN WINDOW LABEL
         
 
 # SPLASH SCREEN
@@ -24,8 +17,6 @@ class SplashScreen(QMainWindow):
         self.ui = Ui_SplashScreen()
         self.ui.setupUi(self)
 
-        ## UI ==> INTERFACE CODES
-        ########################################################################
 
         ## REMOVE TITLE BAR
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
@@ -46,10 +37,9 @@ class SplashScreen(QMainWindow):
         # TIMER IN MILLISECONDS
         self.timer.start(35)
 
-        # CHANGE DESCRIPTION
 
         # Initial Text
-        self.ui.label_description.setText("<strong>WELCOME</strong> TO Notepy")
+        self.ui.label_description.setText("<strong>WELCOME</strong> To Notepy")
 
         # Change Texts
         QtCore.QTimer.singleShot(1500, lambda: self.ui.label_description.setText("<strong>LOADING</strong> MODULE"))
