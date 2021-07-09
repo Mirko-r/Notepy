@@ -8,7 +8,7 @@ Notepy is a full-featured Notepad Python app
 ```
   $ git clone https://github.com/Mirko-r/Notepy.git && cd Notepy
   $ pip install -r requirements .txt
-  $ python notepy.py
+  $ python main.py
 ```
 <h3>WINDOWS</h3>
 
