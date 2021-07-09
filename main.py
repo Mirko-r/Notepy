@@ -7,9 +7,6 @@ from PySide2.QtWidgets import *
 ## ==> SPLASH SCREEN
 from ui_splash_screen import Ui_SplashScreen
 
-## ==> MAIN WINDOW
-from ui_main import Ui_MainWindow
-
 ## ==> GLOBALS
 counter = 0
 
