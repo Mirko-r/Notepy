@@ -24,9 +24,10 @@ class Help():
         messagebox.showinfo(
             "Version 2.x", 
             "What's new:\n\n"+
-            "- Added support for open and saveAs a lot of filetypes"
-            "- Better SaveAs function"
-            "- Improved status bar"
+            "- Added support for open and saveAs a lot of filetypes\n"
+            "- Better SaveAs function\n"
+            "- Improved status bar\n"
+            "- Now the program icon changes according to the extension of the file that you open\n"
         )
         
 def main(root, text, menubar):
