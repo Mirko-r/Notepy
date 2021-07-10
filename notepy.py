@@ -24,7 +24,7 @@ def main():
     root.title("Notepy")
     root.geometry("1200x600")
     root.minsize(width=600, height=600)
-    root.iconbitmap("icon/notepy.ico")
+    root.iconbitmap("icons/notepy.ico")
     status_bar = Label(root, text='Ready   ', anchor=E)
     status_bar.pack(fill="x", side="bottom", ipady=4)
 
