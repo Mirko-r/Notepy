@@ -108,55 +108,55 @@ class File():  # File menu
         self.root.title("Notepy - " + self.filename)
         language_name = file_extension
         if language_name == ".py":
-            icon = PhotoImage(file='language_icons/logo_python.png')
+            icon = PhotoImage(file='icons/language_icons/logo_python.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".c" or language_name == ".i":
-            icon = PhotoImage(file='language_icons/logo_c.png')
+            icon = PhotoImage(file='icons/language_icons/logo_c.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".cpp" or language_name == ".cc" or language_name == ".cxx" or language_name == ".c++" or language_name == ".hpp" or language_name == ".hh" or language_name == ".hxx" or language_name == ".h++" or language_name == ".h" or language_name == ".ii":
-            icon = PhotoImage(file='language_icons/logo_cpp.png')
+            icon = PhotoImage(file='icons/language_icons/logo_cpp.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".css":
-            icon = PhotoImage(file='language_icons/logo_css.png')
+            icon = PhotoImage(file='icons/language_icons/logo_css.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".html":
-            icon = PhotoImage(file='language_icons/logo_html.png')
+            icon = PhotoImage(file='icons/language_icons/logo_html.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".json" or language_name == ".jsonc":
-            icon = PhotoImage(file='language_icons/logo_json.png')
+            icon = PhotoImage(file='icons/language_icons/logo_json.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".lua":
-            icon = PhotoImage(file='language_icons/logo_lua.png')
+            icon = PhotoImage(file='icons/language_icons/logo_lua.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".pl" or language_name == ".pm" or language_name == ".pod" or language_name == ".t" or language_name == ".PL" or language_name == ".psgi":
-            icon = PhotoImage(file='language_icons/logo_perl.png')
+            icon = PhotoImage(file='icons/language_icons/logo_perl.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".rb" or language_name == ".rbx" or language_name == ".rjs" or language_name == "*.gemspec" or language_name == ".rake" or language_name == ".ru" or language_name == ".erb" or language_name == ".podspec" or language_name == ".rbi":
-            icon = PhotoImage(file='language_icons/logo_ruby.png')
+            icon = PhotoImage(file='icons/language_icons/logo_ruby.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".sh" or language_name == ".bash" or language_name == ".bashrc" or language_name == ".bash_aliases" or language_name == ".bash_profile" or language_name == ".bash_login" or language_name == ".ebuild" or language_name == ".profile" or language_name ==".bash_logout" or language_name ==".xprofile":
-            icon = PhotoImage(file='language_icons/logo_bash.png')
+            icon = PhotoImage(file='icons/language_icons/logo_bash.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".bat" or language_name == ".cmd":
-            icon = PhotoImage(file='language_icons/logo_batch.png')
+            icon = PhotoImage(file='icons/language_icons/logo_batch.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".coffee" or language_name == ".cson" or language_name == ".iced":
-            icon = PhotoImage(file='language_icons/logo_coffeescript.png')
+            icon = PhotoImage(file='icons/language_icons/logo_coffeescript.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".cs" or language_name == ".csx" or language_name == ".cake":
-            icon = PhotoImage(file='language_icons/logo_csharp.png')
+            icon = PhotoImage(file='icons/language_icons/logo_csharp.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".java" or language_name == ".class" or language_name == ".jav":
-            icon = PhotoImage(file='language_icons/logo_java.png')
+            icon = PhotoImage(file='icons/language_icons/logo_java.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".js"  or language_name == ".cs6" or language_name == ".mjs" or language_name == ".cjs" or language_name == ".pac":
-            icon = PhotoImage(file='language_icons/logo_javascript.png')
+            icon = PhotoImage(file='icons/language_icons/logo_javascript.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".sql" or language_name == ".dsql":
-            icon = PhotoImage(file='language_icons/logo_sql.png')
+            icon = PhotoImage(file='icons/language_icons/logo_sql.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif  language_name == ".yml" or language_name == ".eyaml" or language_name == ".eyml" or language_name == ".yaml":
-            icon = PhotoImage(file='language_icons/logo_yaml.png')
+            icon = PhotoImage(file='icons/language_icons/logo_yaml.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         try:
             f.write(t.rstrip())
@@ -246,55 +246,55 @@ class File():  # File menu
         self.root.title("Notepy - " + self.filename)
         language_name = file_extension
         if language_name == ".py":
-            icon = PhotoImage(file='language_icons/logo_python.png')
+            icon = PhotoImage(file='icons/language_icons/logo_python.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".c" or language_name == ".i":
-            icon = PhotoImage(file='language_icons/logo_c.png')
+            icon = PhotoImage(file='icons/language_icons/logo_c.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".cpp" or language_name == ".cc" or language_name == ".cxx" or language_name == ".c++" or language_name == ".hpp" or language_name == ".hh" or language_name == ".hxx" or language_name == ".h++" or language_name == ".h" or language_name == ".ii":
-            icon = PhotoImage(file='language_icons/logo_cpp.png')
+            icon = PhotoImage(file='icons/language_icons/logo_cpp.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".css":
-            icon = PhotoImage(file='language_icons/logo_css.png')
+            icon = PhotoImage(file='icons/language_icons/logo_css.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".html":
-            icon = PhotoImage(file='language_icons/logo_html.png')
+            icon = PhotoImage(file='icons/language_icons/logo_html.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".json" or language_name == ".jsonc":
-            icon = PhotoImage(file='language_icons/logo_json.png')
+            icon = PhotoImage(file='icons/language_icons/logo_json.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".lua":
-            icon = PhotoImage(file='language_icons/logo_lua.png')
+            icon = PhotoImage(file='icons/language_icons/logo_lua.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".pl" or language_name == ".pm" or language_name == ".pod" or language_name == ".t" or language_name == ".PL" or language_name == ".psgi":
-            icon = PhotoImage(file='language_icons/logo_perl.png')
+            icon = PhotoImage(file='icons/language_icons/logo_perl.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".rb" or language_name == ".rbx" or language_name == ".rjs" or language_name == "*.gemspec" or language_name == ".rake" or language_name == ".ru" or language_name == ".erb" or language_name == ".podspec" or language_name == ".rbi":
-            icon = PhotoImage(file='language_icons/logo_ruby.png')
+            icon = PhotoImage(file='icons/language_icons/logo_ruby.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".sh" or language_name == ".bash" or language_name == ".bashrc" or language_name == ".bash_aliases" or language_name == ".bash_profile" or language_name == ".bash_login" or language_name == ".ebuild" or language_name == ".profile" or language_name ==".bash_logout" or language_name ==".xprofile":
-            icon = PhotoImage(file='language_icons/logo_bash.png')
+            icon = PhotoImage(file='icons/language_icons/logo_bash.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".bat" or language_name == ".cmd":
-            icon = PhotoImage(file='language_icons/logo_batch.png')
+            icon = PhotoImage(file='icons/language_icons/logo_batch.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".coffee" or language_name == ".cson" or language_name == ".iced":
-            icon = PhotoImage(file='language_icons/logo_coffeescript.png')
+            icon = PhotoImage(file='icons/language_icons/logo_coffeescript.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".cs" or language_name == ".csx" or language_name == ".cake":
-            icon = PhotoImage(file='language_icons/logo_csharp.png')
+            icon = PhotoImage(file='icons/language_icons/logo_csharp.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".java" or language_name == ".class" or language_name == ".jav":
-            icon = PhotoImage(file='language_icons/logo_java.png')
+            icon = PhotoImage(file='icons/language_icons/logo_java.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".js"  or language_name == ".cs6" or language_name == ".mjs" or language_name == ".cjs" or language_name == ".pac":
-            icon = PhotoImage(file='language_icons/logo_javascript.png')
+            icon = PhotoImage(file='icons/language_icons/logo_javascript.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".sql" or language_name == ".dsql":
-            icon = PhotoImage(file='language_icons/logo_sql.png')
+            icon = PhotoImage(file='icons/language_icons/logo_sql.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif  language_name == ".yml" or language_name == ".eyaml" or language_name == ".eyml" or language_name == ".yaml":
-            icon = PhotoImage(file='language_icons/logo_yaml.png')
+            icon = PhotoImage(file='icons/language_icons/logo_yaml.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
             
     def quit(self, *args):
