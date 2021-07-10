@@ -4,7 +4,7 @@ from PySide2.QtGui import  QColor
 from PySide2.QtWidgets import *
 ## ==> SPLASH SCREEN
 from ui_splash_screen import Ui_SplashScreen
-
+import notepy
 
 ## ==> GLOBALS
 counter = 0
@@ -65,13 +65,14 @@ class SplashScreen(QMainWindow):
             # STOP TIMER
             self.timer.stop()
 
-            # SHOW MAIN WINDOW
-            #self.main.show()
-
             # CLOSE SPLASH SCREEN
             self.close()
-            import notepy
-            self.main =notepy.Open()
+            # SHOW MAIN WINDOW
+
+            self.main = notepy.main()
+            self.main.show()
+
+
         # INCREASE COUNTER
         counter += 1
 
