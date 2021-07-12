@@ -32,6 +32,7 @@ class Help():
             "- Better format menu separation\n"
             "- Added Splash Screen\n"
             "- Added readability function on Revision menu\n"
+            "- Better revision menu separation\n"
         )
         
 def main(root, text, menubar):
