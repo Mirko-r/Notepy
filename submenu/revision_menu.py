@@ -10,6 +10,7 @@ from num2words import num2words
 import readtime
 import webbrowser
 import re
+import textstat
 
 class Revision(): # Revision menu
     def __init__(self, text, status_bar):
@@ -73,6 +74,22 @@ class Revision(): # Revision menu
         else:
             messagebox.showerror("Error", "No text selected")
 
+    def readability(self):
+        a = textstat.flesch_reading_ease(self.text.get(1.0, END))
+        if a < 30:
+            messagebox.showinfo("Readability", "This text is very confusing")
+        elif a < 50:
+            messagebox.showinfo("Readability", "This text is difficult")
+        elif a < 60:
+            messagebox.showinfo("Readability", "This text fairly difficult")
+        elif a < 70:
+            messagebox.showinfo("Readability", "This is a standar text")
+        elif a < 80:
+            messagebox.showinfo("Readability", "This text is fairly easy")
+        elif a < 90:
+            messagebox.showinfo("Readability", "This is an easy text")
+        elif a > 90:
+            messagebox.showinfo("Readability", "This text is very easy")
 
 def main(root, text, menubar, status_bar):
     revisionmenu = Menu(menubar, tearoff=False) ## Revision menu gui
@@ -80,6 +97,7 @@ def main(root, text, menubar, status_bar):
     revisionmenu.add_command(label="Count Words", command=objRevision.words_count)
     revisionmenu.add_command(label="Count Characters", command=objRevision.chars_count)
     revisionmenu.add_command(label="Calculate read time", command=objRevision.readtime)
+    revisionmenu.add_command(label="Calculate Readability", command=objRevision.readability)
     revisionmenu.add_command(label="Search on Internet", command=objRevision.open_webb)
     revisionmenu.add_command(label="Correct text", command=objRevision.correct)
     revisionmenu.add_command(label="Num to words", command=objRevision.numtowords)
