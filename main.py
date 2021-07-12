@@ -5,20 +5,10 @@ from tkinter.simpledialog import *
 from tkinter.ttk import *
 from idlelib.percolator import Percolator
 from idlelib.colorizer import ColorDelegator
-from submenu import file_menu, format_menu, edit_menu, revision_menu, help_menu, rightmenu
-import os
-from sys import platform
+from submenu import file_menu, format_menu, edit_menu, revision_menu, help_menu, rightmenu, run_menu
 
 
 def main():
-    def run_terminal(*args):
-        if platform == 'darwin':
-            os.system('open -a Terminal -n')
-        elif platform == 'win32':
-            os.system('start cmd')
-        elif platform == 'linux':
-            os.system('gnome-terminal')
-
     root = Tk()
 
     root.title("Notepy")
@@ -51,15 +41,13 @@ def main():
 
     rightmenu.main(root, text, menubar, status_bar)
 
-    menubar.add_command(label="Run terminal", command=run_terminal)
-
     help_menu.main(root, text, menubar)
+
+    run_menu.main(root, menubar)
 
     Percolator(text).insertfilter(ColorDelegator())
 
     root.grid_columnconfigure(0, weight=1)
     root.resizable(True, True)
-
-    root.bind_all("<Control-t>", run_terminal)
 
     root.mainloop()
