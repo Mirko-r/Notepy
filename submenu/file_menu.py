@@ -5,6 +5,7 @@ from tkinter.simpledialog import *
 from tkinter.ttk import *
 from tkinter.scrolledtext import *
 from tkinter import Scrollbar, Text, messagebox, Menu
+from fpdf import FPDF
 import os
 
 
@@ -296,12 +297,23 @@ class File():  # File menu
         elif  language_name == ".yml" or language_name == ".eyaml" or language_name == ".eyml" or language_name == ".yaml":
             icon = PhotoImage(file='icons/language_icons/logo_yaml.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
+
+    def exp_pdf(self):
+        pdf = FPDF()
+        pdf.add_page()
+        pdf.set_font("Arial", "", 16)
+        content = self.text.get(0.0, END)
+        pdf.multi_cell(0, 5, content)
+
+        pdf.ln()
+        pdf.output(asksaveasfilename(defaultextension=".pdf",filetypes=[("PDF file", "*.pdf")]), "F")
             
     def quit(self, *args):
         entry = askyesno(
             title="Quit", message="Are you sure you want to quit?")
         if entry == True:
             self.root.destroy()
+
 
     def __init__(self, text, root, status_bar):
         self.filename = None
@@ -310,14 +322,23 @@ class File():  # File menu
         self.status_bar = status_bar
 
 def main(root, text, menubar, status_bar):
+
     filemenu = Menu(menubar, tearoff=False)  # File menu gui
     objFile = File(text, root, status_bar)
+
     filemenu.add_command(label=" New", command=objFile.newFile)
     filemenu.add_command(label=" Open ", command=objFile.openFile)
     filemenu.add_command(label=" Save ", command=objFile.saveFile)
     filemenu.add_command(label=" Save As ", command=objFile.saveAs)
+
     filemenu.add_separator()
+
+    filemenu.add_command(label=" Export to PDF", command=objFile.exp_pdf)
+
+    filemenu.add_separator()
+
     filemenu.add_command(label=" Exit ", command=objFile.quit)
+
     menubar.add_cascade(label=" File ", menu=filemenu)
     root.config(menu=menubar)
 
