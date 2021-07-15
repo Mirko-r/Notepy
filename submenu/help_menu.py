@@ -34,7 +34,8 @@ class Help():
             "- Added readability function on Revision menu\n"
             "- Better revision menu separation\n"
             "- Added Run menu ( ▷ )\n"
-            "- Run terminal moved into Run menu"
+            "- Run terminal moved into Run menu\n"
+            "- Added basic PDF export"
         )
         
 def main(root, text, menubar):
