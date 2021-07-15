@@ -4,8 +4,8 @@ from tkinter import messagebox, Menu
 class Help():
     def showAbout():
         messagebox.showinfo(
-                        "About Notepy v2.x", 
-                        "Notepy v2.x\nThe code is written totally in python\n"+
+                        "About Notepy v2.5", 
+                        "Notepy v2.5\nThe code is written totally in python\n"+
                         "The source code is open,\n"+
                         "you can see it on GitHub: Mirko-r/Notepy\n\n"+
                         "By Mirko Rovere"
@@ -22,7 +22,7 @@ class Help():
 
     def release():
         messagebox.showinfo(
-            "Version 2.x", 
+            "Version 2.5", 
             "What's new:\n\n"+
             "- Added support for open and saveAs a lot of filetypes\n"
             "- Better SaveAs and Open functions\n"
@@ -31,11 +31,10 @@ class Help():
             "- Added text align submenu on format menu\n"
             "- Better format menu separation\n"
             "- Added Splash Screen\n"
-            "- Added readability function on Revision menu\n"
             "- Better revision menu separation\n"
             "- Added Run menu ( ▷ )\n"
             "- Run terminal moved into Run menu\n"
-            "- Added basic PDF export"
+            "- Added basic PDF export on file menu\n"
         )
         
 def main(root, text, menubar):
