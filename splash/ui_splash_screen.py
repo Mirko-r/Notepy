@@ -91,7 +91,7 @@ class Ui_SplashScreen(object):
     def retranslateUi(self, SplashScreen):
         SplashScreen.setWindowTitle(QCoreApplication.translate("SplashScreen", u"MainWindow", None))
         self.label_title.setText(QCoreApplication.translate("SplashScreen", u"<strong>Notepy</strong>", None))
-        self.label_loading.setText(QCoreApplication.translate("SplashScreen", u"loading...", None))
-        self.label_credits.setText(QCoreApplication.translate("SplashScreen", u"<strong>Created</strong>: Mirko Rovere", None))
+        self.label_loading.setText(QCoreApplication.translate("SplashScreen", u"'Writing is the painting of the voice'" , None))
+        self.label_credits.setText(QCoreApplication.translate("SplashScreen", u"<strong>Created by</strong>: Mirko Rovere", None))
     # retranslateUi
 
