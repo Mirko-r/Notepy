@@ -1,5 +1,5 @@
 tkinter
-time
+DateTime
 readtime
 os-sys
 idlelib
