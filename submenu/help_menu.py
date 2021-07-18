@@ -27,6 +27,7 @@ class Help():
             "What's new:\n\n" +
             "- Better splash screen\n"+
             "- Now the program is under MIT license, you can read it on license command under Help menu"
+            "- Added basic syntax highlight function on Edit menu"
         )
 
     def license():
