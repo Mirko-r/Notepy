@@ -26,7 +26,7 @@ class Help():
             "Version 3.0",
             "What's new:\n\n" +
             "- Better splash screen\n"+
-            "- Now the program is under MIT license, you can read it on license command under Help menu"
+            "- Now the program is under MIT license, you can read it on license command under Help menu\n"+
             "- Added basic syntax highlight function on Edit menu"
         )
 
