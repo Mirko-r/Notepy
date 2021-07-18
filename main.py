@@ -3,14 +3,11 @@ from tkinter.filedialog import *
 from tkinter.messagebox import *
 from tkinter.simpledialog import *
 from tkinter.ttk import *
-from idlelib.percolator import Percolator
-from idlelib.colorizer import ColorDelegator
 from submenu import file_menu, format_menu, edit_menu, revision_menu, help_menu, rightmenu, run_menu
 
 
 def main():
     root = Tk()
-
     root.title("Notepy")
     root.geometry("1200x600")
     root.minsize(width=600, height=600)
@@ -27,6 +24,7 @@ def main():
     text.pack(fill=Y, expand=1)
     text.config(yscrollcommand=scrollbar.set)
     text.focus_set()
+
     scrollbar.config(command=text.yview)
 
     menubar = Menu(root)
@@ -44,8 +42,6 @@ def main():
     help_menu.main(root, text, menubar)
 
     run_menu.main(root, menubar)
-
-    Percolator(text).insertfilter(ColorDelegator())
 
     root.grid_columnconfigure(0, weight=1)
     root.resizable(True, True)
