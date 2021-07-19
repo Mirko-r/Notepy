@@ -3,7 +3,7 @@ from tkinter.filedialog import *
 from tkinter.messagebox import *
 from tkinter.simpledialog import *
 from tkinter.ttk import *
-from submenu import file_menu, format_menu, edit_menu, revision_menu, help_menu, rightmenu, run_menu
+from submenu import file_menu, format_menu, edit_menu, revision_menu, help_menu, rightmenu, run_menu, dictionary
 
 
 def main():
@@ -27,6 +27,7 @@ def main():
 
     scrollbar.config(command=text.yview)
 
+
     menubar = Menu(root)
 
     file_menu.main(root, text, menubar, status_bar)
@@ -39,6 +40,8 @@ def main():
 
     rightmenu.main(root, text, menubar, status_bar)
 
+    dictionary.main(root, text, menubar)
+    
     help_menu.main(root, text, menubar)
 
     run_menu.main(root, menubar)
