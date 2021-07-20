@@ -78,7 +78,7 @@ def main(root, text, menubar, status_bar):
     editmenu.add_command(label="Select All", command=objEdit.selectAll)
     editmenu.add_command(label="Delete All", command=objEdit.delete_all)
     editmenu.add_separator()
-    editmenu.add_command(label="Syntax highlight", command=objEdit.sintax_highlight)
+    editmenu.add_command(label="Highlight syntax", command=objEdit.sintax_highlight)
     menubar.add_cascade(label="Edit", menu=editmenu)
     root.config(menu=menubar)
 
