@@ -28,8 +28,6 @@ class Help():
             "- Better splash screen\n"+
             "- Now the program is under MIT license, you can read it on license command under Help menu\n"+
             "- Added basic syntax highlight function on Edit menu\n"
-            "- Added dictionary menu\n"
-            "- Added Etymology of the word function on Dictionary menu"
         )
 
     def license():
