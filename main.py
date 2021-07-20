@@ -3,7 +3,6 @@ from tkinter.filedialog import *
 from tkinter.messagebox import *
 from tkinter.simpledialog import *
 from tkinter.ttk import *
-from tkinter import messagebox
 from submenu import file_menu, format_menu, edit_menu, revision_menu, help_menu, rightmenu, run_menu
 
 
