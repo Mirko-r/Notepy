@@ -8,4 +8,3 @@ webbrowser
 num2words 
 PySide2
 fpdf
-ety
