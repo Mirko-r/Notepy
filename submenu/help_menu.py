@@ -15,7 +15,7 @@ class Help():
     def keyb_short():
         messagebox.showinfo(
             "Keyboard Shortcut", "Ctrl+b = Bold\nCtrl+i = Italic\nCtrl+u = Underline\nCtrl+t = Overstrike\n\n" +
-            "Ctrl+c = Copy\nCtrl+x = Cut\nCtrl+v = Paste\nCtrl+y = Undo\nCtrl+z = Redo\nCtrl+f = Find\nCtrl+a = Select all\nCtrl+d = Delete all\n\n" +
+            "Ctrl+c = Copy\nCtrl+x = Cut\nCtrl+v = Paste\nCtrl+y = Undo\nCtrl+z = Redo\nCtrl+f = Find\nCtrl+a = Select all\nCtrl+d = Delete all\nCtrl+Shift+u = Uppercase\n\n" +
             "Ctrl+n = New file\nCtrl+o = Open file\nCtrl+s = Save file\n\n" +
             "Ctrl+q = Quit\n\n" +
             "Ctrl+t = Run terminal"
@@ -28,6 +28,8 @@ class Help():
             "- Better splash screen\n"+
             "- Now the program is under MIT license, you can read it on license command under Help menu\n"+
             "- Added basic syntax highlight function on Edit menu\n"
+            "- Added uppercase function on Edit menu\n"
+            "- Added one shortcut"
         )
 
     def license():
