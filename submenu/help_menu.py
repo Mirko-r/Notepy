@@ -1,5 +1,10 @@
 from tkinter.messagebox import *
 from tkinter import messagebox, Menu
+from tkinter import *
+from tkinter.filedialog import *
+from tkinter.messagebox import *
+from tkinter.simpledialog import *
+from tkinter.ttk import *
 
 
 class Help():
@@ -25,38 +30,61 @@ class Help():
         messagebox.showinfo(
             "Version 3.0",
             "What's new:\n\n" +
-            "- Better splash screen\n"+
-            "- Now the program is under MIT license, you can read it on license command under Help menu\n"+
+            "- Better splash screen\n" +
+            "- Now the program is under MIT license, you can read it on license command under Help menu\n" +
             "- Added basic syntax highlight function on Edit menu\n"
             "- Added uppercase function on Edit menu\n"
-            "- Added one shortcut"
+            "- Added one shortcut\n"
+            "- Now notepy has it's how terminal"
+            "- Added terminal command in Help menu"
         )
 
     def license():
         messagebox.showinfo(
             "Notepy License",
-            "MIT License\n\n"+
+            "MIT License\n\n" +
 
-            "Copyright(c) 2021 Mirko Rovere\n\n"+
-            
-            "Permission is hereby granted, free of charge, to any person obtaining a copy "+
-            "of this software and associated documentation files(the 'Software'), to deal "+
-            "in the Software without restriction, including without limitation the rights "+
-            "to use, copy, modify, merge, publish, distribute, sublicense, and/or sell "+
-            "copies of the Software, and to permit persons to whom the Software is "+
-            "furnished to do so, subject to the following conditions:\n\n"+
+            "Copyright(c) 2021 Mirko Rovere\n\n" +
 
-            "The above copyright notice and this permission notice shall be included in all "+
-            "copies or substantial portions of the Software.\n\n"+
+            "Permission is hereby granted, free of charge, to any person obtaining a copy " +
+            "of this software and associated documentation files(the 'Software'), to deal " +
+            "in the Software without restriction, including without limitation the rights " +
+            "to use, copy, modify, merge, publish, distribute, sublicense, and/or sell " +
+            "copies of the Software, and to permit persons to whom the Software is " +
+            "furnished to do so, subject to the following conditions:\n\n" +
 
-            "THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR "+
-            "IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, "+
-            "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE "+
-            "AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER"+
-            "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,"+
-            "OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE "+
+            "The above copyright notice and this permission notice shall be included in all " +
+            "copies or substantial portions of the Software.\n\n" +
+
+            "THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR " +
+            "IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, " +
+            "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE " +
+            "AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER" +
+            "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM," +
+            "OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE " +
             "SOFTWARE."
         )
+
+    def term_help():
+
+        root = Tk()
+        root.title("Help terminal command")
+        root.iconbitmap("icons/notepy.ico")
+        v = Scrollbar(root)
+  
+        v.pack(side = RIGHT, fill = Y)
+          
+        t = Text(root, width = 120, height = 25, wrap = NONE,
+                 yscrollcommand = v.set)
+
+        f = open('submenu/terminal/term_command.txt','r').read()
+        t.insert(END, f)
+
+        t.pack(side=TOP, fill=X)
+  
+        v.config(command=t.yview)
+  
+        root.mainloop()
 
 
 def main(root, text, menubar):
@@ -66,6 +94,7 @@ def main(root, text, menubar):
     helpmenu.add_command(label='About', command=Help.showAbout)
     helpmenu.add_command(label='Shortcut', command=Help.keyb_short)
     helpmenu.add_command(label='Release notes', command=Help.release)
+    helpmenu.add_command(label="Terminal command", command=Help.term_help)
     menubar.add_cascade(label="Help", menu=helpmenu)
 
     root.config(menu=menubar)
