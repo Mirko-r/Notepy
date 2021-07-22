@@ -1,24 +1,27 @@
-import os
-from sys import platform
 from tkinter import *
 from tkinter import Menu
+from tkterminal import Terminal
+
 
 class run():
     def run_terminal(*args):
-        if platform == 'darwin':
-            os.system('open -a Terminal -n')
-        elif platform == 'win32':
-            os.system('start cmd')
-        elif platform == 'linux':
-            os.system('gnome-terminal')
+        main = Tk()
+        main.title("Terminal")
+        main.iconbitmap("icons/notepy.ico")
+        terminal = Terminal(main, padx=5, pady=5,
+                            background='black', foreground='white')
+        terminal.shell = True
+        terminal.pack(expand=True, fill=BOTH)
+        main.mainloop()
+
 
 def main(root, menubar):
-   
+
     runmenu = Menu(menubar, tearoff=False)
 
     runmenu.add_command(label="Run terminal", command=run.run_terminal)
     menubar.add_cascade(label="▷", menu=runmenu)
 
     root.config(menu=menubar)
-    
+
     root.bind_all("<Control-t>", run.run_terminal)
