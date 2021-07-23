@@ -35,35 +35,25 @@ class Help():
             "- Added basic syntax highlight function on Edit menu\n"
             "- Added uppercase function on Edit menu\n"
             "- Added one shortcut\n"
-            "- Now notepy has it's how terminal"
+            "- Now notepy has it's own terminal"
             "- Added terminal command in Help menu"
         )
 
     def license():
-        messagebox.showinfo(
-            "Notepy License",
-            "MIT License\n\n" +
 
-            "Copyright(c) 2021 Mirko Rovere\n\n" +
+        root = Tk()
+        root.title("Notepy license")
+        root.iconbitmap("icons/notepy.ico")
+          
+        t = Text(root, width = 80, height = 25, wrap = NONE)
 
-            "Permission is hereby granted, free of charge, to any person obtaining a copy " +
-            "of this software and associated documentation files(the 'Software'), to deal " +
-            "in the Software without restriction, including without limitation the rights " +
-            "to use, copy, modify, merge, publish, distribute, sublicense, and/or sell " +
-            "copies of the Software, and to permit persons to whom the Software is " +
-            "furnished to do so, subject to the following conditions:\n\n" +
+        f = open('submenu/license/LICENSE.txt','r').read()
+        t.insert(END, f)
 
-            "The above copyright notice and this permission notice shall be included in all " +
-            "copies or substantial portions of the Software.\n\n" +
-
-            "THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR " +
-            "IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, " +
-            "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE " +
-            "AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER" +
-            "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM," +
-            "OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE " +
-            "SOFTWARE."
-        )
+        t.pack(side=TOP, fill=X)
+  
+  
+        root.mainloop()
 
     def term_help():
 
