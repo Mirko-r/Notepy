@@ -43,7 +43,7 @@ class Help():
 
         root = Tk()
         root.title("Notepy license")
-        root.iconbitmap("icons/notepy.ico")
+        root.iconbitmap("icons/license.ico")
           
         t = Text(root, width = 80, height = 25, wrap = NONE)
 
@@ -59,7 +59,7 @@ class Help():
 
         root = Tk()
         root.title("Help terminal command")
-        root.iconbitmap("icons/notepy.ico")
+        root.iconbitmap("icons/help.ico")
         v = Scrollbar(root)
   
         v.pack(side = RIGHT, fill = Y)
