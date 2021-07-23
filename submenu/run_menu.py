@@ -7,7 +7,7 @@ class run():
     def run_terminal(*args):
         main = Tk()
         main.title("Terminal")
-        main.iconbitmap("icons/notepy.ico")
+        main.iconbitmap("icons/terminal.ico")
         terminal = Terminal(main, padx=5, pady=5,
                             background='black', foreground='white')
         terminal.shell = True
