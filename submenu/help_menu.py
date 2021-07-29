@@ -5,6 +5,7 @@ from tkinter.filedialog import *
 from tkinter.messagebox import *
 from tkinter.simpledialog import *
 from tkinter.ttk import *
+import webbrowser
 
 
 class Help():
@@ -27,17 +28,14 @@ class Help():
         )
 
     def release():
-        messagebox.showinfo(
-            "Version 3.0",
-            "What's new:\n\n" +
-            "- Better splash screen\n" +
-            "- Now the program is under MIT license, you can read it on license command under Help menu\n" +
-            "- Added basic syntax highlight function on Edit menu\n"
-            "- Added uppercase function on Edit menu\n"
-            "- Added one shortcut\n"
-            "- Now notepy has it's own terminal"
-            "- Added terminal command in Help menu"
-        )
+        webbrowser.open("https://mirko-r.github.io/notepy/docs/changelog.html")
+        """- Better splash screen
+            - Now the program is under MIT license, you can read it on license command under Help menu
+            - Added basic syntax highlight function on Edit menu
+            - Added uppercase function on Edit menu
+            - Added one shortcut
+            - Now notepy has it's own termin
+            - Added terminal command in Help menu"""
 
     def license():
 
