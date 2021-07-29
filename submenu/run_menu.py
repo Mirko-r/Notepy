@@ -11,6 +11,7 @@ class run():
         terminal = Terminal(main, padx=5, pady=5,
                             background='black', foreground='white')
         terminal.shell = True
+        terminal.basename = "Notepy$ > "
         terminal.pack(expand=True, fill=BOTH)
         main.mainloop()
 
