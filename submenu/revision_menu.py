@@ -73,6 +73,15 @@ class Revision(): # Revision menu
         else:
             messagebox.showerror("Error", "No text selected")
 
+    def sent_analy(self):
+        input = self.text.get(1.0, END)
+        score = TextBlob(input).sentiment.polarity
+        if score == 0:
+            messagebox.showinfo("Sentiment Analysis", "Neutral 😐")
+        elif score <0: 
+            messagebox.showinfo("Sentiment Analysis", "Negative 😫")
+        elif score >0:
+            messagebox.showinfo("Sentiment Analysis", "Positive 😀")
 
 
 def main(root, text, menubar, status_bar):
@@ -86,6 +95,7 @@ def main(root, text, menubar, status_bar):
     revisionmenu.add_command(label="Search on Internet", command=objRevision.open_webb)
     revisionmenu.add_command(label="Correct text", command=objRevision.correct)
     revisionmenu.add_command(label="Num to words", command=objRevision.numtowords)
+    revisionmenu.add_command(label="Sentiment Analysis", command=objRevision.sent_analy)
     menubar.add_cascade(label=" Revision ", menu=revisionmenu)
     root.config(menu=menubar)
 
