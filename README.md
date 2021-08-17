@@ -2,8 +2,9 @@
 <div align="center">
 <img src="https://github.com/Mirko-r/Notepy/blob/main/notepy2-5.jpg" border-radius=25px>
   </div>
-Notepy is a full-featured Notepad Python app
-
+  <br>
+<b>Notepy is a full-featured Notepad Python app
+</b>
 <h2 align="center">INSTALLATION</h2>
 <h3>LINUX</h3>
 
