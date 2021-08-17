@@ -1,5 +1,7 @@
 <h1 align="center"> DESCRIPTION </h1>
+<div align="center">
 <img src="https://github.com/Mirko-r/Notepy/blob/main/notepy2-5.jpg" border-radius=25px>
+  </div>
 Notepy is a full-featured Notepad Python app
 
 <h2 align="center">INSTALLATION</h2>
