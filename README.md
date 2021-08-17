@@ -22,4 +22,4 @@ Download exe from <a href="https://github.com/Mirko-r/Notepy/releases/">release 
 <li><a href="https://github.com/TrendingTechnology/guesslang">guesslang</a> module</li>
 <li><a href="https://github.com/jdkato/codetype">codetype</a> module</li>
 <li><a href="https://github.com/jeanralphaviles/comment_parser">comment parser</a> module</li>
-<li><a href="https://github.com/TrendingTechnology/pyWhat"pyWhat</a> module</li>
+<li><a href="https://github.com/TrendingTechnology/pyWhat">pyWhat</a> module</li>
