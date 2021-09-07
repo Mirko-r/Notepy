@@ -1,21 +1,21 @@
 from tkinter.messagebox import *
 from tkinter import messagebox, Menu
 from tkinter import *
-from tkinter.filedialog import *
 from tkinter.messagebox import *
 from tkinter.simpledialog import *
 from tkinter.ttk import *
 import webbrowser
-
+import platform
+import sys
 
 class Help():
     def showAbout():
         messagebox.showinfo(
-            "About Notepy v3.0",
-            "Notepy v3.0\nThe code is written totally in python\n" +
-            "The source code is open,\n" +
-            "you can see it on GitHub: Mirko-r/Notepy\n\n" +
-            "By Mirko Rovere"
+            "About Notepy",
+            "Notepy Version: 3.5\n" +
+            "Date of Release: xx/xx/xxxx\n"
+            "Os: " + platform.system() + "\n" + 
+            "Python Version: " + sys.version + "\n"
         )
 
     def keyb_short():
@@ -29,14 +29,7 @@ class Help():
 
     def release():
         webbrowser.open("https://mirko-r.github.io/notepy/docs/changelog.html")
-        """- Better splash screen
-            - Now the program is under MIT license, you can read it on license command under Help menu
-            - Added basic syntax highlight function on Edit menu
-            - Added uppercase function on Edit menu
-            - Added one shortcut
-            - Now notepy has it's own termin
-            - Added terminal command in Help menu"""
-
+        """Add code menu, this menu is totally for coders"""
     def license():
 
         root = Tk()
