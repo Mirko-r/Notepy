@@ -3,7 +3,7 @@ from tkinter.filedialog import *
 from tkinter.messagebox import *
 from tkinter.simpledialog import *
 from tkinter.ttk import *
-from submenu import file_menu, format_menu, edit_menu, revision_menu, help_menu, rightmenu, run_menu
+from submenu import file_menu, format_menu, edit_menu, revision_menu, code_menu, help_menu, rightmenu, run_menu
 
 
 def main():
@@ -37,6 +37,8 @@ def main():
     format_menu.main(root, text, menubar, status_bar)
 
     revision_menu.main(root, text, menubar, status_bar)
+
+    code_menu.main(root, text, menubar, status_bar)
 
     rightmenu.main(root, text, menubar, status_bar)
     
