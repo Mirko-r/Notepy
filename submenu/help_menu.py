@@ -29,7 +29,14 @@ class Help():
 
     def release():
         webbrowser.open("https://mirko-r.github.io/notepy/docs/changelog.html")
-        """Add code menu, this menu is totally for coders"""
+        """
+        Add code menu, this menu is totally for coders
+        The window center itself automatically
+        Add C submenu in code menu
+        Add Get program functions list in C submenu
+        Syntax higlight moved from edit menu to code menu
+        Better quit pop-up
+        """
     def license():
 
         root = Tk()
