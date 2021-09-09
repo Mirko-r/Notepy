@@ -9,7 +9,16 @@ from submenu import file_menu, format_menu, edit_menu, revision_menu, code_menu,
 def main():
     root = Tk()
     root.title("Notepy")
-    root.geometry("1200x600")
+
+    #center the window
+    screenWidth = root.winfo_screenwidth()
+    screenHeight = root.winfo_screenheight()
+
+    left = (screenWidth / 2) - 600
+    top = (screenHeight / 2) - 300
+
+    root.geometry('%dx%d+%d+%d' % (1200,  600, left, top))
+    
     root.minsize(width=600, height=600)
     root.iconbitmap("icons/notepy.ico")
     status_bar = Label(root, text='Ready   ', anchor=E)
