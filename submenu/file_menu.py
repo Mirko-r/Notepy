@@ -309,8 +309,7 @@ class File():  # File menu
         pdf.output(asksaveasfilename(defaultextension=".pdf",filetypes=[("PDF file", "*.pdf")]), "F")
             
     def quit(self, *args):
-        entry = askyesno(
-            title="Quit", message="Are you sure you want to quit?")
+        entry = askokcancel('Confirm exit', "Sure you want to Quit?")
         if entry == True:
             self.root.destroy()
 
@@ -321,6 +320,7 @@ class File():  # File menu
         self.root = root
         self.status_bar = status_bar
 
+    
 def main(root, text, menubar, status_bar):
 
     filemenu = Menu(menubar, tearoff=False)  # File menu gui
