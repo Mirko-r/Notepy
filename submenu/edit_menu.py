@@ -5,8 +5,6 @@ from tkinter.simpledialog import *
 from tkinter.ttk import *
 from tkinter.scrolledtext import *
 from tkinter import Scrollbar, Text, messagebox, Menu
-from idlelib.percolator import Percolator
-from idlelib.colorizer import ColorDelegator
 
 class Edit(): # Edit menu
 
@@ -56,9 +54,6 @@ class Edit(): # Edit menu
             self.text.tag_config('found', foreground='white', background='blue')
             self.status_bar.config(text = "Matched search in blue  ")
         
-    def sintax_highlight(self):
-       Percolator(self.text).insertfilter(ColorDelegator())
-
     def uppercase(self, *args):
         if self.text.tag_ranges(SEL):
             a = self.text.get(SEL_FIRST, SEL_LAST)
@@ -88,8 +83,6 @@ def main(root, text, menubar, status_bar):
     editmenu.add_separator()
     editmenu.add_command(label="Select All", command=objEdit.selectAll)
     editmenu.add_command(label="Delete All", command=objEdit.delete_all)
-    editmenu.add_separator()
-    editmenu.add_command(label="Highlight syntax", command=objEdit.sintax_highlight)
     menubar.add_cascade(label="Edit", menu=editmenu)
     root.config(menu=menubar)
 
