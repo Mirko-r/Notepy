@@ -91,6 +91,7 @@ class Code():
 
     def sintax_highlight(self):
        Percolator(self.text).insertfilter(ColorDelegator())
+       self.status_bar.config(text = "Highlight on  ")
 
 
 
