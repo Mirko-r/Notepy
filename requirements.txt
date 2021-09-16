@@ -9,3 +9,4 @@ num2words
 PySide2
 fpdf
 tkterminal
+yapf
