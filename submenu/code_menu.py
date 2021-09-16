@@ -6,6 +6,7 @@ from tkinter.simpledialog import *
 from tkinter.ttk import *
 from idlelib.percolator import Percolator
 from idlelib.colorizer import ColorDelegator
+from yapf.yapflib.yapf_api import FormatCode
 import re
 
 
@@ -89,10 +90,16 @@ class Code():
         list = ''.join([str(item) for item in function_list])
         messagebox.showinfo("Functions list", list)
 
+    def python_format(self):
+        formatted_code, changed = FormatCode(str(self.text.get(1.0, END)))
+        self.text.delete(1.0, END)
+        self.text.insert(INSERT, formatted_code)
+        if changed == 1:
+            self.status_bar.config(text = "Formatted")
+
     def sintax_highlight(self):
        Percolator(self.text).insertfilter(ColorDelegator())
        self.status_bar.config(text = "Highlight on  ")
-
 
 
 def main(root, text, menubar, status_bar):
@@ -102,8 +109,13 @@ def main(root, text, menubar, status_bar):
 
     # Specific C functions
     csubmenu = Menu(codemenu, tearoff=False)
-    csubmenu.add_command(label="Get program functions list", command=objCode.get_c_function_list)
+    csubmenu.add_command(label="Get program functions list" ,command=objCode.get_c_function_list)
     codemenu.add_cascade(label="C", underline=0, menu=csubmenu)
+
+    # Specific Python functions
+    pythonsubemnu = Menu(codemenu, tearoff=False)
+    pythonsubemnu.add_command(label="Format code", command=objCode.python_format)
+    codemenu.add_cascade(label="Python", underline=0, menu=pythonsubemnu)
 
     codemenu.add_command(label="Highlight syntax", command=objCode.sintax_highlight)
 
