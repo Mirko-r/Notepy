@@ -20,7 +20,6 @@ Download exe from <a href="https://github.com/Mirko-r/Notepy/releases/">release 
 <h2 align="center">TO BE ADDED</h2>
 <li><a href="https://github.com/jameslyons/pycipher">pycipher</a> module</li>
 <li><a href="https://github.com/mnmelo/lazy_import">lazy import</a> module</li>
-<li><a href="https://github.com/google/yapf">yapf</a> mdoule</li>
 <li><a href="https://github.com/Python-Markdown/markdown">markdown</a> module</li>
 <li><a href="https://github.com/TrendingTechnology/guesslang">guesslang</a> module</li>
 <li><a href="https://github.com/jdkato/codetype">codetype</a> module</li>
