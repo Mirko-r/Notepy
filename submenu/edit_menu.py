@@ -53,7 +53,7 @@ class Edit(): # Edit menu
                 idx = lastidx
             self.text.tag_config('found', foreground='white', background='blue')
             self.status_bar.config(text = "Matched search in blue  ")
-        
+
     def uppercase(self, *args):
         if self.text.tag_ranges(SEL):
             a = self.text.get(SEL_FIRST, SEL_LAST)
@@ -62,6 +62,21 @@ class Edit(): # Edit menu
             self.text.insert(INSERT, a)
         else:
             messagebox.showerror("uppercase", "no text selected")
+
+    def lowercase(self):
+        if self.text.tag_ranges(SEL):
+            a = self.text.get(SEL_FIRST, SEL_LAST)
+            self.text.delete(SEL_FIRST, SEL_LAST)
+            a = a.lower()
+            self.text.insert(INSERT, a)
+        else:
+            messagebox.showerror("lowercase", "no text selected")
+
+    def reverse(self):
+        rtext = self.text.get(0.0, END)[::-1]
+        rtext.replace('\n', '', 1)
+        self.text.delete(0.0, END)
+        self.text.insert(0.0, rtext)
 
     def __init__(self, text, root, status_bar):
         self.clipboard = None
@@ -75,14 +90,18 @@ def main(root, text, menubar, status_bar):
     editmenu.add_command(label="Copy", command=objEdit.copy)
     editmenu.add_command(label="Cut", command=objEdit.cut)
     editmenu.add_command(label="Paste", command=objEdit.paste)
+    editmenu.add_separator()
     editmenu.add_command(label="Undo", command=objEdit.undo)
     editmenu.add_command(label="Redo", command=objEdit.redo)
     editmenu.add_command(label="Find", command=objEdit.find)
     editmenu.add_separator()
     editmenu.add_command(label="Uppercase", command=objEdit.uppercase)
+    editmenu.add_command(label="Lowercase", command=objEdit.lowercase)
     editmenu.add_separator()
     editmenu.add_command(label="Select All", command=objEdit.selectAll)
     editmenu.add_command(label="Delete All", command=objEdit.delete_all)
+    editmenu.add_separator()
+    editmenu.add_command(label="Reverse", command=objEdit.reverse)
     menubar.add_cascade(label="Edit", menu=editmenu)
     root.config(menu=menubar)
 
