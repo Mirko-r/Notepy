@@ -1,127 +1,123 @@
-from tkinter.messagebox import *
-from tkinter import messagebox, Menu
 from tkinter import *
+from tkinter.filedialog import *
 from tkinter.messagebox import *
 from tkinter.simpledialog import *
 from tkinter.ttk import *
-from idlelib.percolator import Percolator
-from idlelib.colorizer import ColorDelegator
-from yapf.yapflib.yapf_api import FormatCode
-import re
+from tkinter.scrolledtext import *
+from tkinter import Scrollbar, Text, messagebox, Menu
 
+class Edit(): # Edit menu
 
-class Code():
+    def copy(self, *args):
+        sel = self.text.selection_get()
+        self.clipboard = sel
+        self.status_bar.config(text = "Copied to clipboard  ")
+
+    def cut(self, *args):
+        sel = self.text.selection_get()
+        self.clipboard = sel
+        self.text.delete(SEL_FIRST, SEL_LAST)
+        self.status_bar.config(text = "Cutted  ")
+
+    def paste(self, *args):
+        self.text.insert(INSERT, self.clipboard)
+        self.status_bar.config(text = "Ready  ")
+
+    def selectAll(self, *args):
+        self.text.tag_add(SEL, "1.0", END)
+        self.text.mark_set(0.0, END)
+        self.text.see(INSERT)
+        self.status_bar.config(text = "Ready  ")
+
+    def delete_all(self, *args):
+	    self.text.delete(1.0, END)
+
+    def undo(self, *args):
+        self.text.edit_undo()
+        self.status_bar.config(text = "Undo  ")
+
+    def redo(self, *args):
+        self.text.edit_redo()
+        self.status_bar.config(text = "Redo  ")
+
+    def find(self, *args):
+        self.text.tag_remove('found', '1.0', END)
+        target = askstring('Find', 'Search String:')
+        if target:
+            idx = '1.0'
+            while 1:
+                idx = self.text.search(target, idx, nocase=1, stopindex=END)
+                if not idx: break
+                lastidx = '%s+%dc' % (idx, len(target))
+                self.text.tag_add('found', idx, lastidx)
+                idx = lastidx
+            self.text.tag_config('found', foreground='white', background='blue')
+            self.status_bar.config(text = "Matched search in blue  ")
+
+    def uppercase(self, *args):
+        if self.text.tag_ranges(SEL):
+            a = self.text.get(SEL_FIRST, SEL_LAST)
+            self.text.delete(SEL_FIRST, SEL_LAST)
+            a = a.upper()
+            self.text.insert(INSERT, a)
+            self.status_bar.config(text = "Uppercase  ")
+        else:
+            messagebox.showerror("Uppercase", "no text selected")
+
+    def lowercase(self):
+        if self.text.tag_ranges(SEL):
+            a = self.text.get(SEL_FIRST, SEL_LAST)
+            self.text.delete(SEL_FIRST, SEL_LAST)
+            a = a.lower()
+            self.text.insert(INSERT, a)
+            self.status_bar.config(text = "Lowercase  ")
+        else:
+            messagebox.showerror("Lowercase", "no text selected")
+
+    def reverse(self):
+        if self.text.tag_ranges(SEL):
+            rtext = self.text.get(SEL_FIRST, SEL_LAST)[::-1]
+            rtext.replace('\0', '', 1)
+            self.text.delete(SEL_FIRST, SEL_LAST)
+            self.text.insert(INSERT, rtext)
+            self.status_bar.config(text = "Reversed  ")
+        else:
+            messagebox.showerror("Reverse", "no text selected")
+
     def __init__(self, text, root, status_bar):
+        self.clipboard = None
         self.text = text
-        self.root = root
+        self.rightClick = Menu(root)
         self.status_bar = status_bar
 
-    def get_c_function_list(self):
-        """
-        Parse the text and return all C functions as a list.
-        Made as simple as possible.
-        The text must be valid C code.
-        """
-        # Store the text
-        text = self.text.get(1.0, END)
-        # Initialize state variables
-        curly_count = 0
-        parenthesis_count = 0
-        singleline_commenting = False
-        multiline_commenting = False
-        typedefing = False
-        stringing = False
-        previous_token = ""
-        last_found_function = ""
-        last_line = 0
-        current_line = 1
-        function_list = []
-        # Tokenize the text and remove the space characters
-        splitter = re.compile(r"(\#\w+|\'|\"|\n|\s+|\w+|\W)")
-        tokens = [token for token in splitter.findall(text)]
-        # Main Loop for filtering tokens
-        for i, token in enumerate(tokens):
-            stripped_token = token.strip()
-            if "\n" in token:
-                newline_count = token.count("\n")
-                current_line += newline_count
-                # Reset the single line comment flag
-                singleline_commenting = False
-            if stripped_token == "":
-                continue
-            # Check for function definitions
-            if curly_count == 0:
-                if multiline_commenting == False and singleline_commenting == False:
-                    if token == "{" and previous_token == ")":
-                        # The function has passed the filter, add it to the list
-                        function_list.append((last_found_function, last_line))
-                    elif token == "(" and re.match(r"\w", previous_token) and parenthesis_count == 0:
-                        last_found_function = previous_token
-                        last_line = current_line
-            if token == "typedef":
-                typedefing = True
-            # Check for various state changes
-            if (multiline_commenting == False and singleline_commenting == False and
-                    stringing == False):
-                if token == "{":
-                    curly_count += 1
-                elif token == "}":
-                    curly_count -= 1
-                elif token == "(":
-                    parenthesis_count += 1
-                elif token == ")":
-                    parenthesis_count -= 1
-                elif token == "*" and previous_token == "/":
-                    multiline_commenting = True
-                elif token == "/" and previous_token == "/":
-                    singleline_commenting = True
-            else:
-                if token == "/" and previous_token == "*":
-                    multiline_commenting = False
-            # Store the previous token
-            if stripped_token != "":
-                previous_token = token
-        # Sort the functions alphabetically
-
-        def compare_function(item):
-            return item[0].lower()
-        function_list = sorted(function_list, key=compare_function)
-        # Return the function list
-        list = ''.join([str(item) for item in function_list])
-        messagebox.showinfo("Functions list", list)
-
-    def python_format(self):
-        formatted_code, changed = FormatCode(str(self.text.get(1.0, END)))
-        self.text.delete(1.0, END)
-        self.text.insert(INSERT, formatted_code)
-        if changed == 1:
-            self.status_bar.config(text = "Formatted")
-
-    def sintax_highlight(self):
-       Percolator(self.text).insertfilter(ColorDelegator())
-       self.status_bar.config(text = "Highlight on  ")
-
-
 def main(root, text, menubar, status_bar):
-
-    codemenu = Menu(menubar, tearoff=False)
-    objCode = Code(text, root, status_bar)
-
-    # Specific C functions
-    csubmenu = Menu(codemenu, tearoff=False)
-    csubmenu.add_command(label="Get program functions list" ,command=objCode.get_c_function_list)
-    codemenu.add_cascade(label="C", underline=0, menu=csubmenu)
-
-    # Specific Python functions
-    pythonsubemnu = Menu(codemenu, tearoff=False)
-    pythonsubemnu.add_command(label="Format code", command=objCode.python_format)
-    codemenu.add_cascade(label="Python", underline=0, menu=pythonsubemnu)
-
-    codemenu.add_command(label="Highlight syntax", command=objCode.sintax_highlight)
-
-    menubar.add_cascade(label="Code", menu=codemenu)
+    editmenu = Menu(menubar, tearoff=False) # Edit menu gui
+    objEdit = Edit(text, root, status_bar)
+    editmenu.add_command(label="Copy", command=objEdit.copy)
+    editmenu.add_command(label="Cut", command=objEdit.cut)
+    editmenu.add_command(label="Paste", command=objEdit.paste)
+    editmenu.add_separator()
+    editmenu.add_command(label="Undo", command=objEdit.undo)
+    editmenu.add_command(label="Redo", command=objEdit.redo)
+    editmenu.add_command(label="Find", command=objEdit.find)
+    editmenu.add_separator()
+    editmenu.add_command(label="Uppercase", command=objEdit.uppercase)
+    editmenu.add_command(label="Lowercase", command=objEdit.lowercase)
+    editmenu.add_separator()
+    editmenu.add_command(label="Select All", command=objEdit.selectAll)
+    editmenu.add_command(label="Delete All", command=objEdit.delete_all)
+    editmenu.add_separator()
+    editmenu.add_command(label="Reverse", command=objEdit.reverse)
+    menubar.add_cascade(label="Edit", menu=editmenu)
     root.config(menu=menubar)
 
+    #Edit menu keyboard shortcut
+    root.bind_all("<Control-y>", objEdit.undo)
+    root.bind_all("<Control-z>", objEdit.redo)
+    root.bind_all("<Control-f>", objEdit.find)
+    root.bind_all("Control-a", objEdit.selectAll)
+    root.bind_all("<Control-d>", objEdit.delete_all)
+    root.bind_all("<Control-Shift-KeyPress-U>", objEdit.uppercase)
 
 if __name__ == "__main__":
-    messagebox.showerror("Error", "Please run main.py")
+    messagebox.showerror("Eror", "Please run 'main.py'")
