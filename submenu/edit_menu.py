@@ -60,8 +60,9 @@ class Edit(): # Edit menu
             self.text.delete(SEL_FIRST, SEL_LAST)
             a = a.upper()
             self.text.insert(INSERT, a)
+            self.status_bar.config(text = "Uppercase  ")
         else:
-            messagebox.showerror("uppercase", "no text selected")
+            messagebox.showerror("Uppercase", "no text selected")
 
     def lowercase(self):
         if self.text.tag_ranges(SEL):
@@ -69,14 +70,19 @@ class Edit(): # Edit menu
             self.text.delete(SEL_FIRST, SEL_LAST)
             a = a.lower()
             self.text.insert(INSERT, a)
+            self.status_bar.config(text = "Lowercase  ")
         else:
-            messagebox.showerror("lowercase", "no text selected")
+            messagebox.showerror("Lowercase", "no text selected")
 
     def reverse(self):
-        rtext = self.text.get(0.0, END)[::-1]
-        rtext.replace('\n', '', 1)
-        self.text.delete(0.0, END)
-        self.text.insert(0.0, rtext)
+        if self.text.tag_ranges(SEL):
+            rtext = self.text.get(SEL_FIRST, SEL_LAST)[::-1]
+            rtext.replace('\0', '', 1)
+            self.text.delete(SEL_FIRST, SEL_LAST)
+            self.text.insert(INSERT, rtext)
+            self.status_bar.config(text = "Reversed  ")
+        else:
+            messagebox.showerror("Reverse", "no text selected")
 
     def __init__(self, text, root, status_bar):
         self.clipboard = None
