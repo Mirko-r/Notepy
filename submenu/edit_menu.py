@@ -74,7 +74,7 @@ class Edit(): # Edit menu
         else:
             messagebox.showerror("Capitalize", "no text selected")
 
-    def lowercase(self):
+    def lowercase(self, *args):
         if self.text.tag_ranges(SEL):
             a = self.text.get(SEL_FIRST, SEL_LAST)
             self.text.delete(SEL_FIRST, SEL_LAST)
@@ -129,6 +129,7 @@ def main(root, text, menubar, status_bar):
     root.bind_all("Control-a", objEdit.selectAll)
     root.bind_all("<Control-d>", objEdit.delete_all)
     root.bind_all("<Control-Shift-KeyPress-U>", objEdit.uppercase)
+    root.bind_all("<Control-Shift-KeyPress-L>", objEdit.lowercase)
 
 if __name__ == "__main__":
     messagebox.showerror("Eror", "Please run 'main.py'")
