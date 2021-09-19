@@ -90,16 +90,90 @@ class Code():
         list = ''.join([str(item) for item in function_list])
         messagebox.showinfo("Functions list", list)
 
+    def remove_comments_from_c_code(self):
+        """
+        Remove single and multiline comments from C source code
+        """
+        c_code = self.text.get(1.0, END)
+        code_list = c_code.split('\n')
+        no_comment_code_list = []
+        commenting = False
+        for line in code_list:
+            if commenting == False:
+                if '"' in line and '//' in line:
+                    stringing = False
+                    for i, ch in enumerate(line):
+                        if ch == '"' and stringing == False:
+                            stringing = True
+                        elif ch == '"' and line[i-1] != "\\" and stringing == True:
+                            stringing = False
+                        elif stringing == False and line[i:i+2] == '//':
+                            line = line[:i]
+                            break
+                    no_comment_code_list.append(line)
+                elif '"' in line and '/*' in line:
+                    stringing = False
+                    for i, ch in enumerate(line):
+                        if ch == '"' and stringing == False:
+                            stringing = True
+                        elif ch == '"' and line[i-1] != "\\" and stringing == True:
+                            stringing = False
+                        elif stringing == False and line[i:i+2] == '/*':
+                            # Remove the closed comments
+                            rest_line = re.sub(
+                                r"/\*.*?\*/", "", line[i:], flags=re.DOTALL)
+                            line = line[:i] + rest_line
+                            # Check again if there is a comment sequence left in the line
+                            if '/*' in rest_line:
+                                line = line[:i] + rest_line[:line.find('/*')]
+                                commenting = True
+                                break
+                    no_comment_code_list.append(line)
+                elif '//' in line:
+                    if line.strip().startswith("//"):
+                        continue
+                    else:
+                        line = line[:line.find("//")]
+                        no_comment_code_list.append(line)
+                elif '/*' in line:
+                    # Remove the closed comments
+                    line = re.sub(r"/\*.*?\*/", "", line, flags=re.DOTALL)
+                    # Check again if there is a comment sequence left in the line
+                    if '/*' in line:
+                        line_to_comment = line[:line.find("/*")]
+                        if line_to_comment.strip() != "":
+                            no_comment_code_list.append(line_to_comment)
+                        commenting = True
+                    else:
+                        no_comment_code_list.append(line)
+                else:
+                    no_comment_code_list.append(line)
+            else:
+                if '*/' in line:
+                    # Remove the closed comments
+                    line = re.sub(r"/\*.*?\*/", "", line, flags=re.DOTALL)
+                    if '*/' in line:
+                        if line.strip().endswith('*/'):
+                            commenting = False
+                        else:
+                            line = line[line.find("/*")+2:]
+                            no_comment_code_list.append(line)
+                            commenting = False
+        # Return the result
+        result = '\n'.join(no_comment_code_list)
+        self.text.delete(1.0, END)
+        self.text.insert(INSERT, result)
+
     def python_format(self):
         formatted_code, changed = FormatCode(str(self.text.get(1.0, END)))
         self.text.delete(1.0, END)
         self.text.insert(INSERT, formatted_code)
         if changed == 1:
-            self.status_bar.config(text = "Formatted  ")
+            self.status_bar.config(text="Formatted  ")
 
     def sintax_highlight(self):
-       Percolator(self.text).insertfilter(ColorDelegator())
-       self.status_bar.config(text = "Highlight on  ")
+        Percolator(self.text).insertfilter(ColorDelegator())
+        self.status_bar.config(text="Highlight on  ")
 
 
 def main(root, text, menubar, status_bar):
@@ -109,15 +183,19 @@ def main(root, text, menubar, status_bar):
 
     # Specific C functions
     csubmenu = Menu(codemenu, tearoff=False)
-    csubmenu.add_command(label="Get program functions list" ,command=objCode.get_c_function_list)
+    csubmenu.add_command(label="Get program functions list",
+                         command=objCode.get_c_function_list)
+    csubmenu.add_command(label="Remove comment", command=objCode.remove_comments_from_c_code)
     codemenu.add_cascade(label="C", underline=0, menu=csubmenu)
 
     # Specific Python functions
     pythonsubemnu = Menu(codemenu, tearoff=False)
-    pythonsubemnu.add_command(label="Format code", command=objCode.python_format)
+    pythonsubemnu.add_command(
+        label="Format code", command=objCode.python_format)
     codemenu.add_cascade(label="Python", underline=0, menu=pythonsubemnu)
 
-    codemenu.add_command(label="Highlight syntax", command=objCode.sintax_highlight)
+    codemenu.add_command(label="Highlight syntax",
+                         command=objCode.sintax_highlight)
 
     menubar.add_cascade(label="Code", menu=codemenu)
     root.config(menu=menubar)
