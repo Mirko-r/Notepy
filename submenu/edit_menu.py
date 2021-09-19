@@ -64,6 +64,16 @@ class Edit(): # Edit menu
         else:
             messagebox.showerror("Uppercase", "no text selected")
 
+    def capitalize(self):
+        if self.text.tag_ranges(SEL):
+            a = self.text.get(SEL_FIRST, SEL_LAST)
+            self.text.delete(SEL_FIRST, SEL_LAST)
+            a = a.capitalize()
+            self.text.insert(INSERT, a)
+            self.status_bar.config(text = "Capitalized  ")
+        else:
+            messagebox.showerror("Capitalize", "no text selected")
+
     def lowercase(self):
         if self.text.tag_ranges(SEL):
             a = self.text.get(SEL_FIRST, SEL_LAST)
@@ -103,6 +113,7 @@ def main(root, text, menubar, status_bar):
     editmenu.add_separator()
     editmenu.add_command(label="Uppercase", command=objEdit.uppercase)
     editmenu.add_command(label="Lowercase", command=objEdit.lowercase)
+    editmenu.add_command(label="Capitalize", command=objEdit.capitalize)
     editmenu.add_separator()
     editmenu.add_command(label="Select All", command=objEdit.selectAll)
     editmenu.add_command(label="Delete All", command=objEdit.delete_all)
