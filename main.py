@@ -5,7 +5,6 @@ from tkinter.simpledialog import *
 from tkinter.ttk import *
 from submenu import file_menu, format_menu, edit_menu, revision_menu, code_menu, help_menu, rightmenu, run_menu
 
-
 def main():
     root = Tk()
     root.title("Notepy")
@@ -48,7 +47,7 @@ def main():
     revision_menu.main(root, text, menubar, status_bar)
 
     code_menu.main(root, text, menubar, status_bar)
-
+    
     rightmenu.main(root, text, menubar, status_bar)
     
     help_menu.main(root, text, menubar)
@@ -57,5 +56,7 @@ def main():
 
     root.grid_columnconfigure(0, weight=1)
     root.resizable(True, True)
-
+    root.lift()
+    root.attributes('-topmost',True)
+    root.after_idle(root.attributes,'-topmost',False)
     root.mainloop()
