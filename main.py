@@ -50,7 +50,7 @@ def main():
     
     rightmenu.main(root, text, menubar, status_bar)
     
-    help_menu.main(root, text, menubar)
+    help_menu.main(root, menubar)
 
     run_menu.main(root, menubar)
 
