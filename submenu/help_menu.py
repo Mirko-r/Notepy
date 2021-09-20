@@ -12,7 +12,7 @@ class Help():
     def showAbout():
         messagebox.showinfo(
             "About Notepy",
-            "Notepy Version: 3.5\n" +
+            "Notepy Version: 4.0\n" +
             "Date of Release: xx/xx/xxxx\n"
             "Os: " + platform.system() + "\n" + 
             "Python Version: " + sys.version + "\n"
@@ -29,14 +29,6 @@ class Help():
 
     def release():
         webbrowser.open("https://mirko-r.github.io/notepy/docs/changelog.html")
-        """
-        Add code menu, this menu is totally for coders
-        The window center itself automatically
-        Add C submenu in code menu
-        Add Get program functions list in C submenu
-        Syntax higlight moved from edit menu to code menu
-        Better quit pop-up
-        """
     def license():
 
         root = Tk()
@@ -75,7 +67,7 @@ class Help():
         root.mainloop()
 
 
-def main(root, text, menubar):
+def main(root, menubar):
 
     helpmenu = Menu(menubar, tearoff=False)  # Help menu gui
     helpmenu.add_command(label='License', command=Help.license)
