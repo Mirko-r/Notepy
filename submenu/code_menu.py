@@ -172,7 +172,13 @@ class Code():
             self.status_bar.config(text="Formatted  ")
 
     def sintax_highlight(self):
-        Percolator(self.text).insertfilter(ColorDelegator())
+        cdg = ColorDelegator()
+        cdg.tagdefs['COMMENT'] = {'foreground': '#FF0000', 'background': '#FFFFFF'}
+        cdg.tagdefs['KEYWORD'] = {'foreground': '#007F00', 'background': '#FFFFFF'}
+        cdg.tagdefs['BUILTIN'] = {'foreground': '#7F7F00', 'background': '#FFFFFF'}
+        cdg.tagdefs['STRING'] = {'foreground': '#7F3F00', 'background': '#FFFFFF'}
+        cdg.tagdefs['DEFINITION'] = {'foreground': '#007F7F', 'background': '#FFFFFF'}
+        Percolator(self.text).insertfilter(cdg)
         self.status_bar.config(text="Highlight on  ")
 
 
