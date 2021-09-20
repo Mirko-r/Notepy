@@ -1,9 +1,11 @@
 from tkinter import *
+from tkinter import filedialog
 from tkinter.filedialog import *
 from tkinter.messagebox import *
 from tkinter.simpledialog import *
 from tkinter.ttk import *
 from tkinter.scrolledtext import *
+from PIL import Image, ImageTk
 from tkinter import Scrollbar, Text, messagebox, Menu
 
 class Edit(): # Edit menu
@@ -94,6 +96,20 @@ class Edit(): # Edit menu
         else:
             messagebox.showerror("Reverse", "no text selected")
 
+    def insert_image(self):
+        global my_image
+        my_image = PhotoImage(
+            file=askopenfilename(
+                filetypes=[
+                    ("Image files", "*.png"),
+                    ("Image files", "*.jpg")
+                ]
+            )
+        )
+        position = self.text.index(INSERT)
+        self.text.image_create(position, image = my_image)
+
+
     def __init__(self, text, root, status_bar):
         self.clipboard = None
         self.text = text
@@ -103,6 +119,10 @@ class Edit(): # Edit menu
 def main(root, text, menubar, status_bar):
     editmenu = Menu(menubar, tearoff=False) # Edit menu gui
     objEdit = Edit(text, root, status_bar)
+
+    insertsubmenu = Menu(editmenu, tearoff=False)
+    insertsubmenu.add_command(label="Image", command=objEdit.insert_image)
+    
     editmenu.add_command(label="Copy", command=objEdit.copy)
     editmenu.add_command(label="Cut", command=objEdit.cut)
     editmenu.add_command(label="Paste", command=objEdit.paste)
@@ -110,6 +130,8 @@ def main(root, text, menubar, status_bar):
     editmenu.add_command(label="Undo", command=objEdit.undo)
     editmenu.add_command(label="Redo", command=objEdit.redo)
     editmenu.add_command(label="Find", command=objEdit.find)
+    editmenu.add_separator()
+    editmenu.add_cascade(label="Insert", menu=insertsubmenu)
     editmenu.add_separator()
     editmenu.add_command(label="Uppercase", command=objEdit.uppercase)
     editmenu.add_command(label="Lowercase", command=objEdit.lowercase)
