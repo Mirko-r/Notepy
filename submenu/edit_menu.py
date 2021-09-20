@@ -5,7 +5,6 @@ from tkinter.messagebox import *
 from tkinter.simpledialog import *
 from tkinter.ttk import *
 from tkinter.scrolledtext import *
-from PIL import Image, ImageTk
 from tkinter import Scrollbar, Text, messagebox, Menu
 
 class Edit(): # Edit menu
