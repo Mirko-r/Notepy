@@ -83,6 +83,22 @@ class Revision(): # Revision menu
         elif score >0:
             messagebox.showinfo("Sentiment Analysis", "Positive 😀")
 
+    def check_palindrome(self):
+        if self.text.tag_ranges(SEL):
+            num = int(self.text.get(SEL_FIRST, SEL_LAST))
+            temp = num
+            rev = 0
+            while(num>0):
+                dig = num%10
+                rev = rev*10+dig
+                num = num//10
+            if(temp==rev):
+                messagebox.showinfo("Check if number is palindrome", "Palindrome")
+            else:
+                messagebox.showinfo("Check if number is palindrome", "Not palindrome")
+        else:
+            messagebox.showerror("Error", "No text selected")
+
 
 def main(root, text, menubar, status_bar):
     revisionmenu = Menu(menubar, tearoff=False) ## Revision menu gui
@@ -91,6 +107,8 @@ def main(root, text, menubar, status_bar):
     revisionmenu.add_command(label="Count Characters", command=objRevision.chars_count)
     revisionmenu.add_separator()
     revisionmenu.add_command(label="Calculate read time", command=objRevision.readtime)
+    revisionmenu.add_separator()
+    revisionmenu.add_command(label="Check if number is palindrome", command=objRevision.check_palindrome)
     revisionmenu.add_separator()
     revisionmenu.add_command(label="Search on Internet", command=objRevision.open_webb)
     revisionmenu.add_command(label="Correct text", command=objRevision.correct)
