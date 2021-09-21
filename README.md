@@ -17,4 +17,4 @@
 
 # Security Policy
 
-<h2><a href="md/SECURITY.md">View security.md</a>
+<a href="md/SECURITY.md">View security.md</a>
