@@ -1,9 +1,5 @@
-from tkinter.messagebox import *
 from tkinter import messagebox, Menu
 from tkinter import *
-from tkinter.messagebox import *
-from tkinter.simpledialog import *
-from tkinter.ttk import *
 from idlelib.percolator import Percolator
 from idlelib.colorizer import ColorDelegator
 from yapf.yapflib.yapf_api import FormatCode
