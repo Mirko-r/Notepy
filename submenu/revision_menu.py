@@ -1,10 +1,6 @@
 from tkinter import *
-from tkinter.filedialog import *
 from tkinter.messagebox import *
-from tkinter.simpledialog import *
-from tkinter.ttk import *
-from tkinter.scrolledtext import *
-from tkinter import Scrollbar, Text, messagebox, Menu
+from tkinter import messagebox
 from textblob import TextBlob
 from num2words import num2words
 import readtime
@@ -98,6 +94,7 @@ class Revision(): # Revision menu
                 messagebox.showinfo("Check if number is palindrome", "Not palindrome")
         else:
             messagebox.showerror("Error", "No text selected")
+
 
 
 def main(root, text, menubar, status_bar):
