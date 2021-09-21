@@ -1,11 +1,8 @@
 from tkinter import *
-from tkinter import filedialog
 from tkinter.filedialog import *
 from tkinter.messagebox import *
 from tkinter.simpledialog import *
-from tkinter.ttk import *
-from tkinter.scrolledtext import *
-from tkinter import Scrollbar, Text, messagebox, Menu
+from tkinter import  messagebox
 
 class Edit(): # Edit menu
 
