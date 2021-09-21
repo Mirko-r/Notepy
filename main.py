@@ -1,8 +1,4 @@
 from tkinter import *
-from tkinter.filedialog import *
-from tkinter.messagebox import *
-from tkinter.simpledialog import *
-from tkinter.ttk import *
 from modules import status_bar_line_and_column, submenu_caller
 
 def modules_connect(root, text,menubar, status_bar):
