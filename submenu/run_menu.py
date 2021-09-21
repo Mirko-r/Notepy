@@ -1,4 +1,3 @@
-from tkinter import *
 from tkinter import Menu
 from tkterminal import Terminal
 
