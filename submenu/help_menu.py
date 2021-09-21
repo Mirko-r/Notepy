@@ -1,9 +1,5 @@
-from tkinter.messagebox import *
-from tkinter import messagebox, Menu
+from tkinter import messagebox
 from tkinter import *
-from tkinter.messagebox import *
-from tkinter.simpledialog import *
-from tkinter.ttk import *
 import webbrowser
 import platform
 import sys
