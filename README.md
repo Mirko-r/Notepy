@@ -5,7 +5,9 @@
   <br>
 <b>Notepy is a full-featured Notepad Python app
 </b>
-<h2 align="center">INSTALLATION</h2>
+
+# INSTALLATION
+
 <h3>LINUX</h3>
 
 ```
@@ -17,7 +19,7 @@
 
 Download exe from <a href="https://github.com/Mirko-r/Notepy/releases/">release page</a>
 
-<h2 align="center">TO BE ADDED</h2>
+# TO BE ADDED
 <li><a href="https://github.com/jameslyons/pycipher">pycipher</a> module</li>
 <li><a href="https://github.com/mnmelo/lazy_import">lazy import</a> module</li>
 <li><a href="https://github.com/Python-Markdown/markdown">markdown</a> module</li>
@@ -25,3 +27,17 @@ Download exe from <a href="https://github.com/Mirko-r/Notepy/releases/">release 
 <li><a href="https://github.com/jdkato/codetype">codetype</a> module</li>
 <li><a href="https://github.com/jeanralphaviles/comment_parser">comment parser</a> module</li>
 <li><a href="https://github.com/TrendingTechnology/pyWhat">pyWhat</a> module</li>
+
+# Security Policy
+
+## Supported Versions
+
+|     Version    |     Supported      |
+| -------        | ------------------ |
+| last version   | :white_check_mark: |
+| beta version (not released)   | :white_check_mark:                 |
+
+## Reporting a Vulnerability
+
+To report a vulnerability send me an email from <a href="https://mirko-r.github.io">this site</a>
+or create a new issue
