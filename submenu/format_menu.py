@@ -124,7 +124,7 @@ def main(root, text, menubar, status_bar):
     
     for option in fontoptions:
         fsubmenu.add_command(label=option, command=lambda option=option: font.configure(family=option))
-    for value in range(1, 31):
+    for value in range(1, 101):
         ssubmenu.add_command(label=str(value), command=lambda value=value: font.configure(size=value))
     
     asubmenu.add_command(label="Left", command=objFormat.left)
