@@ -1,10 +1,7 @@
 from tkinter import *
 from tkinter.filedialog import *
 from tkinter.messagebox import *
-from tkinter.simpledialog import *
-from tkinter.ttk import *
-from tkinter.scrolledtext import *
-from tkinter import Scrollbar, Text, messagebox, Menu
+from tkinter import messagebox
 from fpdf import FPDF
 import os
 
@@ -327,7 +324,7 @@ def main(root, text, menubar, status_bar):
     objFile = File(text, root, status_bar)
 
     filemenu.add_command(label=" New", command=objFile.newFile)
-    filemenu.add_command(label=" Open ", command=objFile.openFile)
+    filemenu.add_command(label=" Open ",command=objFile.openFile)
     filemenu.add_command(label=" Save ", command=objFile.saveFile)
     filemenu.add_command(label=" Save As ", command=objFile.saveAs)
 
