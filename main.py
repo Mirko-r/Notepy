@@ -3,11 +3,13 @@ from tkinter.filedialog import *
 from tkinter.messagebox import *
 from tkinter.simpledialog import *
 from tkinter.ttk import *
-from submenu import file_menu, format_menu, edit_menu, revision_menu, code_menu, help_menu, rightmenu, run_menu
-from modules import status_bar_line_and_column
+from modules import status_bar_line_and_column, submenu_caller
 
-def modules_connect(text, status_bar):
+def modules_connect(root, text,menubar, status_bar):
+
         status_bar_line_and_column.main(text, status_bar)
+
+        submenu_caller.main(root, text, menubar, status_bar)
 
 def main():
     root = Tk()
@@ -43,28 +45,12 @@ def main():
 
     menubar = Menu(root)
 
-    file_menu.main(root, text, menubar, status_bar)
-
-    edit_menu.main(root, text, menubar, status_bar)
-
-    format_menu.main(root, text, menubar, status_bar)
-
-    revision_menu.main(root, text, menubar, status_bar)
-
-    code_menu.main(root, text, menubar, status_bar)
-    
-    rightmenu.main(root, text, menubar, status_bar)
-    
-    help_menu.main(root, menubar)
-
-    run_menu.main(root, menubar)
-
     root.grid_columnconfigure(0, weight=1)
     root.resizable(True, True)
     root.lift()
     root.attributes('-topmost',True)
     root.after_idle(root.attributes,'-topmost',False)
 
-    modules_connect(text, status_bar)
+    modules_connect(root, text, menubar, status_bar)
     
     root.mainloop()
