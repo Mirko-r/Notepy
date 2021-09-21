@@ -6,19 +6,6 @@
 <b>Notepy is a full-featured Notepad Python app
 </b>
 
-# INSTALLATION
-
-<h3>LINUX</h3>
-
-```
-  $ git clone https://github.com/Mirko-r/Notepy.git && cd Notepy
-  $ pip install -r requirements .txt
-  $ python main.py
-```
-<h3>WINDOWS</h3>
-
-Download exe from <a href="https://github.com/Mirko-r/Notepy/releases/">release page</a>
-
 # TO BE ADDED
 <li><a href="https://github.com/jameslyons/pycipher">pycipher</a> module</li>
 <li><a href="https://github.com/mnmelo/lazy_import">lazy import</a> module</li>
