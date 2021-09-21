@@ -4,6 +4,10 @@ from tkinter.messagebox import *
 from tkinter.simpledialog import *
 from tkinter.ttk import *
 from submenu import file_menu, format_menu, edit_menu, revision_menu, code_menu, help_menu, rightmenu, run_menu
+from modules import status_bar_line_and_column
+
+def modules_connect(text, status_bar):
+        status_bar_line_and_column.main(text, status_bar)
 
 def main():
     root = Tk()
@@ -23,16 +27,17 @@ def main():
     status_bar = Label(root, text='Ready   ', anchor=E)
     status_bar.pack(fill="x", side="bottom", ipady=4)
 
-    
 
     scrollbar = Scrollbar(root)
     scrollbar.pack(side=RIGHT, fill=Y)
 
     text = Text(root, state='normal', width=400, height=400, wrap='word', pady=2,
             padx=3, undo=True, selectbackground="yellow", selectforeground="black",)
+
     text.pack(fill=Y, expand=1)
     text.config(yscrollcommand=scrollbar.set)
     text.focus_set()
+
 
     scrollbar.config(command=text.yview)
 
@@ -59,4 +64,7 @@ def main():
     root.lift()
     root.attributes('-topmost',True)
     root.after_idle(root.attributes,'-topmost',False)
+
+    modules_connect(text, status_bar)
+    
     root.mainloop()
