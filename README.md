@@ -20,6 +20,16 @@ $> python3 notepy.py
 
 **You can also download Notepy from the** [Release page](https://github.com/Mirko-r/Notepy/releases)
 
+## Security Policy
+
+### Supported version
+
+|     Version    |     Supported      |
+| -------        | ------------------ |
+| latest released version   | :white_check_mark: |
+| beta version (not released)   | :white_check_mark:                 |
+
+
 # TO BE ADDED
 <li><a href="https://github.com/jameslyons/pycipher">pycipher</a> module</li>
 <li><a href="https://github.com/mnmelo/lazy_import">lazy import</a> module</li>
@@ -29,6 +39,3 @@ $> python3 notepy.py
 <li><a href="https://github.com/jeanralphaviles/comment_parser">comment parser</a> module</li>
 <li><a href="https://github.com/TrendingTechnology/pyWhat">pyWhat</a> module</li>
 
-# Security Policy
-
-<a href="md/SECURITY.md">View security.md</a>
