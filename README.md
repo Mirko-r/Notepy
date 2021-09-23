@@ -39,3 +39,8 @@ $> python3 notepy.py
 <li><a href="https://github.com/jeanralphaviles/comment_parser">comment parser</a> module</li>
 <li><a href="https://github.com/TrendingTechnology/pyWhat">pyWhat</a> module</li>
 
+## License
+
+Copyright (c) Mirko Rovere. All right Reserved.
+
+Licensed under the [MIT](https://github.com/Mirko-r/Notepy/blob/main/LICENSE) license.
