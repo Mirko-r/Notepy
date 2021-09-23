@@ -34,7 +34,7 @@ def main():
     scrollbar.pack(side=RIGHT, fill=Y)
 
     text = Text(root, state='normal', width=400, height=400, wrap='word', pady=2,
-            padx=3, undo=True, selectbackground="yellow", selectforeground="black",)
+            padx=3, undo=True, selectbackground="yellow", selectforeground="black", font="monospace")
 
     text.pack(fill=Y, expand=1)
     text.config(yscrollcommand=scrollbar.set)
