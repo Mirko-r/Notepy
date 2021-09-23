@@ -29,15 +29,12 @@ $> python3 notepy.py
 | latest released version   | :white_check_mark: |
 | beta version (not released)   | :white_check_mark:                 |
 
+## To be added
 
-# TO BE ADDED
-<li><a href="https://github.com/jameslyons/pycipher">pycipher</a> module</li>
-<li><a href="https://github.com/mnmelo/lazy_import">lazy import</a> module</li>
-<li><a href="https://github.com/Python-Markdown/markdown">markdown</a> module</li>
-<li><a href="https://github.com/TrendingTechnology/guesslang">guesslang</a> module</li>
-<li><a href="https://github.com/jdkato/codetype">codetype</a> module</li>
-<li><a href="https://github.com/jeanralphaviles/comment_parser">comment parser</a> module</li>
-<li><a href="https://github.com/TrendingTechnology/pyWhat">pyWhat</a> module</li>
+- Possibility to encrypt the text
+- lazy import modules
+- Markdown functionalities
+- More coding functionalities
 
 ## License
 
