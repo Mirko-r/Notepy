@@ -3,6 +3,7 @@ from tkinter import *
 import webbrowser
 import platform
 import sys
+import os
 
 class Help():
     def showAbout():
@@ -29,7 +30,11 @@ class Help():
 
         root = Tk()
         root.title("Notepy license")
-        root.iconbitmap("icons/license.ico")
+
+        if "nt" == os.name:
+            root.wm_iconbitmap(bitmap = "./icons/license.ico")
+        else:
+            root.wm_iconbitmap(bitmap = "@./icons/license.xbm")
           
         t = Text(root, width = 80, height = 25, wrap = NONE)
 
@@ -45,7 +50,11 @@ class Help():
 
         root = Tk()
         root.title("Help terminal command")
-        root.iconbitmap("icons/help.ico")
+        
+        if "nt" == os.name:
+            root.wm_iconbitmap(bitmap = "./icons/help.ico")
+        else:
+            root.wm_iconbitmap(bitmap = "@./icons/help.xbm")
         v = Scrollbar(root)
   
         v.pack(side = RIGHT, fill = Y)
