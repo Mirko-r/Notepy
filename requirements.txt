@@ -1,9 +1,9 @@
 DateTime
 readtime
-os-sys==2.1.4
 textblob
 num2words 
 PySide2
 fpdf
 tkterminal
 yapf
+os-sys==2.1.4
