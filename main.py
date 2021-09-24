@@ -1,5 +1,6 @@
 from tkinter import *
 from modules import status_bar_line_and_column, submenu_caller
+import os
 
 def modules_connect(root, text,menubar, status_bar):
 
@@ -25,11 +26,11 @@ def main():
 
     center_window(root)
     root.minsize(width=600, height=600)
-
-    try:
-        root.iconbitmap('./icons/notepy.ico')
-    except:
-            pass
+    
+    if "nt" == os.name:
+        root.wm_iconbitmap(bitmap = "./icons/notepy.ico")
+    else:
+        root.wm_iconbitmap(bitmap = "@./icons/notepy.xbm")
         
     status_bar = Label(root, text='Ready   ', anchor=E)
     status_bar.pack(fill="x", side="bottom", ipady=4)
