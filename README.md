@@ -18,6 +18,17 @@ $> pip install -r requirements.txt
 $> python3 notepy.py
 ```
 
+### Ubuntu/Debian
+
+```shell
+$> sudo apt-get install python3
+$> sudo apt-get install python3-tk idle3  
+$> git clone https://github.com/Mirko-r/Notepy && cd Notepy
+$> pip install -r requirements.txt
+$> python3 notepy.py
+```
+
+
 **You can also download Notepy from the** [Release page](https://github.com/Mirko-r/Notepy/releases)
 
 ## Security Policy
