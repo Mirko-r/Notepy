@@ -13,19 +13,19 @@
 ## Setup
 
 ```shell
-$> git clone https://github.com/Mirko-r/Notepy && cd Notepy
-$> pip install -r requirements.txt
-$> python3 notepy.py
+git clone https://github.com/Mirko-r/Notepy && cd Notepy
+pip install -r requirements.txt
+python3 notepy.py
 ```
 
 ### Ubuntu/Debian
 
 ```shell
-$> sudo apt-get install python3
-$> sudo apt-get install python3-tk idle3  
-$> git clone https://github.com/Mirko-r/Notepy && cd Notepy
-$> pip install -r requirements.txt
-$> python3 notepy.py
+sudo apt-get install python3
+sudo apt-get install python3-tk idle3  
+git clone https://github.com/Mirko-r/Notepy && cd Notepy
+pip install -r requirements.txt
+python3 notepy.py
 ```
 
 
