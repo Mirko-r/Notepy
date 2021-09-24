@@ -25,7 +25,12 @@ def main():
 
     center_window(root)
     root.minsize(width=600, height=600)
-    root.iconbitmap('icons/notepy.ico')
+
+    try:
+        root.iconbitmap('./icons/notepy.ico')
+    except:
+            pass
+        
     status_bar = Label(root, text='Ready   ', anchor=E)
     status_bar.pack(fill="x", side="bottom", ipady=4)
 
