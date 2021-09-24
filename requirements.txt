@@ -2,7 +2,6 @@ DateTime
 readtime
 os-sys==2.1.3
 textblob
-webbrowser
 num2words 
 PySide2
 fpdf
