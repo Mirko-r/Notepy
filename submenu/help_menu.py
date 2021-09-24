@@ -26,6 +26,14 @@ class Help():
 
     def release():
         webbrowser.open("https://mirko-r.github.io/notepy/docs/changelog.html")
+        """
+        Bugfix
+        Better compatibilty with Linux system
+        Add check if number is palindrome on Revision menu
+        Add a module that display the current position of cursor in line and column
+        Add new font sizes
+        Now notepy start with monospace font
+        """
     def license():
 
         root = Tk()
