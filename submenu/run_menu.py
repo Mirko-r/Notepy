@@ -1,12 +1,17 @@
 from tkinter import Menu
+from tkinter import *
 from tkterminal import Terminal
+import os
 
 
 class run():
     def run_terminal(*args):
         main = Tk()
         main.title("Terminal")
-        main.iconbitmap("icons/terminal.ico")
+        if "nt" == os.name:
+            main.wm_iconbitmap(bitmap = "./icons/terminal.ico")
+        else:
+            main.wm_iconbitmap(bitmap = "@./icons/terminal.xbm")
         terminal = Terminal(main, padx=5, pady=5,
                             background='black', foreground='white')
         terminal.shell = True
