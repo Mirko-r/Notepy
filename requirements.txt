@@ -6,4 +6,4 @@ PySide2==5.15.2
 fpdf==1.7.2
 tkterminal==0.1.0
 yapf==0.31.0
-os-sys==2.1.2
+os-sys==2.1.4
