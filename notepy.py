@@ -1,4 +1,5 @@
 import sys
+import os
 from PySide2 import QtCore
 from PySide2.QtGui import  QColor
 from PySide2.QtWidgets import *
@@ -65,9 +66,11 @@ class SplashScreen(QMainWindow):
             # STOP TIMER
             self.timer.stop()
 
-
             #CLOSE SPLASH SCREEN
             self.close()
+
+            if "nt" == os.name:
+                self.main = main.main()
 
 
         # INCREASE COUNTER
@@ -78,5 +81,9 @@ class SplashScreen(QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = SplashScreen()
-    app.exec_()
-    main.main()
+
+    if "nt" == os.name:
+        sys.exit(app.exec_())
+    else:
+        app.exec_()
+        main.main()
