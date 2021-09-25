@@ -17,7 +17,6 @@ class SplashScreen(QMainWindow):
         self.ui = Ui_SplashScreen()
         self.ui.setupUi(self)
 
-
         ## REMOVE TITLE BAR
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
@@ -66,11 +65,9 @@ class SplashScreen(QMainWindow):
             # STOP TIMER
             self.timer.stop()
 
-            # CLOSE SPLASH SCREEN
-            self.close()
 
-            # SHOW MAIN WINDOW
-            self.main = main.main()
+            #CLOSE SPLASH SCREEN
+            self.close()
 
 
         # INCREASE COUNTER
@@ -81,4 +78,5 @@ class SplashScreen(QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = SplashScreen()
-    sys.exit(app.exec_())
+    app.exec_()
+    main.main()
