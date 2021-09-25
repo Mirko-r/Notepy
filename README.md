@@ -46,6 +46,7 @@ python3 notepy.py
 - lazy import modules
 - Markdown functionalities
 - More coding functionalities
+- Better GUI
 
 ## License
 
