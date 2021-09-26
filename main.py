@@ -1,11 +1,11 @@
 from tkinter import *
-from modules import status_bar_line_and_column, submenu_caller
+from modules import submenu_caller, status_bar_
 import os
 
 def modules_connect(root, text,menubar, status_bar):
 
-        # Display current cursor position on status bat
-        status_bar_line_and_column.main(text, status_bar)
+        # Status bar
+        status_bar_.main(text, status_bar)
 
         # call all submenu
         submenu_caller.main(root, text, menubar, status_bar)
