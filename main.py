@@ -32,7 +32,7 @@ def main():
     else:
         root.wm_iconbitmap(bitmap = "@./icons/notepy.xbm")
         
-    status_bar = Label(root, text='Ready   ', anchor=E)
+    status_bar = Label(root, text="| chars=0 | words=0 | line=1  " ,anchor=E)
     status_bar.pack(fill="x", side="bottom", ipady=4)
 
     scrollbar = Scrollbar(root)
