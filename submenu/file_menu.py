@@ -9,10 +9,19 @@ import os
 class File():  # File menu
 
     def newFile(self, *args):
+        if self.saved == 1:
+            entry = askyesnocancel('File not saved', "You want to save?")
+            if entry == True:
+                self.saveFile()
+            elif entry == False:
+                pass
+            else:
+                return None
         self.filename = "Untitled"
         self.text.delete(0.0, END)
         self.status_bar.config(text="New file open  ")
         self.root.title("Notepy - " + self.filename)
+        self.saved = 0
 
     def saveFile(self, *args):
         try:
@@ -21,6 +30,8 @@ class File():  # File menu
             f.write(t)
             f.close()
             self.status_bar.config(text="File saved  ")
+            self.saved = 0
+            self.root.title("Notepy - " + self.filename)
         except:
             self.saveAs()
 
@@ -104,6 +115,7 @@ class File():  # File menu
         self.filename, file_extension = os.path.splitext(f.name)
         self.filename = f.name
         self.root.title("Notepy - " + self.filename)
+        self.saved = 0
         language_name = file_extension
         if language_name == ".py":
             icon = PhotoImage(file='icons/language_icons/logo_python.png')
@@ -132,14 +144,15 @@ class File():  # File menu
         elif language_name == ".rb" or language_name == ".rbx" or language_name == ".rjs" or language_name == "*.gemspec" or language_name == ".rake" or language_name == ".ru" or language_name == ".erb" or language_name == ".podspec" or language_name == ".rbi":
             icon = PhotoImage(file='icons/language_icons/logo_ruby.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
-        elif language_name == ".sh" or language_name == ".bash" or language_name == ".bashrc" or language_name == ".bash_aliases" or language_name == ".bash_profile" or language_name == ".bash_login" or language_name == ".ebuild" or language_name == ".profile" or language_name ==".bash_logout" or language_name ==".xprofile":
+        elif language_name == ".sh" or language_name == ".bash" or language_name == ".bashrc" or language_name == ".bash_aliases" or language_name == ".bash_profile" or language_name == ".bash_login" or language_name == ".ebuild" or language_name == ".profile" or language_name == ".bash_logout" or language_name == ".xprofile":
             icon = PhotoImage(file='icons/language_icons/logo_bash.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".bat" or language_name == ".cmd":
             icon = PhotoImage(file='icons/language_icons/logo_batch.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".coffee" or language_name == ".cson" or language_name == ".iced":
-            icon = PhotoImage(file='icons/language_icons/logo_coffeescript.png')
+            icon = PhotoImage(
+                file='icons/language_icons/logo_coffeescript.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".cs" or language_name == ".csx" or language_name == ".cake":
             icon = PhotoImage(file='icons/language_icons/logo_csharp.png')
@@ -147,13 +160,13 @@ class File():  # File menu
         elif language_name == ".java" or language_name == ".class" or language_name == ".jav":
             icon = PhotoImage(file='icons/language_icons/logo_java.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
-        elif language_name == ".js"  or language_name == ".cs6" or language_name == ".mjs" or language_name == ".cjs" or language_name == ".pac":
+        elif language_name == ".js" or language_name == ".cs6" or language_name == ".mjs" or language_name == ".cjs" or language_name == ".pac":
             icon = PhotoImage(file='icons/language_icons/logo_javascript.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".sql" or language_name == ".dsql":
             icon = PhotoImage(file='icons/language_icons/logo_sql.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
-        elif  language_name == ".yml" or language_name == ".eyaml" or language_name == ".eyml" or language_name == ".yaml":
+        elif language_name == ".yml" or language_name == ".eyaml" or language_name == ".eyml" or language_name == ".yaml":
             icon = PhotoImage(file='icons/language_icons/logo_yaml.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         try:
@@ -163,6 +176,14 @@ class File():  # File menu
             showerror(title="Error", message="Unable to save file...")
 
     def openFile(self, *args):
+        if self.saved == 1:
+            entry = askyesnocancel('File not saved', "You want to save?")
+            if entry == True:
+                self.saveFile()
+            elif entry == False:
+                pass
+            else:
+                return None
         f = askopenfile(
             defaultextension=".txt",
             filetypes=[
@@ -242,6 +263,7 @@ class File():  # File menu
         self.text.insert(0.0, t)
         self.status_bar.config(text="File opened  extension : "+file_extension)
         self.root.title("Notepy - " + self.filename)
+        self.saved = 0
         language_name = file_extension
         if language_name == ".py":
             icon = PhotoImage(file='icons/language_icons/logo_python.png')
@@ -270,14 +292,15 @@ class File():  # File menu
         elif language_name == ".rb" or language_name == ".rbx" or language_name == ".rjs" or language_name == "*.gemspec" or language_name == ".rake" or language_name == ".ru" or language_name == ".erb" or language_name == ".podspec" or language_name == ".rbi":
             icon = PhotoImage(file='icons/language_icons/logo_ruby.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
-        elif language_name == ".sh" or language_name == ".bash" or language_name == ".bashrc" or language_name == ".bash_aliases" or language_name == ".bash_profile" or language_name == ".bash_login" or language_name == ".ebuild" or language_name == ".profile" or language_name ==".bash_logout" or language_name ==".xprofile":
+        elif language_name == ".sh" or language_name == ".bash" or language_name == ".bashrc" or language_name == ".bash_aliases" or language_name == ".bash_profile" or language_name == ".bash_login" or language_name == ".ebuild" or language_name == ".profile" or language_name == ".bash_logout" or language_name == ".xprofile":
             icon = PhotoImage(file='icons/language_icons/logo_bash.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".bat" or language_name == ".cmd":
             icon = PhotoImage(file='icons/language_icons/logo_batch.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".coffee" or language_name == ".cson" or language_name == ".iced":
-            icon = PhotoImage(file='icons/language_icons/logo_coffeescript.png')
+            icon = PhotoImage(
+                file='icons/language_icons/logo_coffeescript.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".cs" or language_name == ".csx" or language_name == ".cake":
             icon = PhotoImage(file='icons/language_icons/logo_csharp.png')
@@ -285,13 +308,13 @@ class File():  # File menu
         elif language_name == ".java" or language_name == ".class" or language_name == ".jav":
             icon = PhotoImage(file='icons/language_icons/logo_java.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
-        elif language_name == ".js"  or language_name == ".cs6" or language_name == ".mjs" or language_name == ".cjs" or language_name == ".pac":
+        elif language_name == ".js" or language_name == ".cs6" or language_name == ".mjs" or language_name == ".cjs" or language_name == ".pac":
             icon = PhotoImage(file='icons/language_icons/logo_javascript.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
         elif language_name == ".sql" or language_name == ".dsql":
             icon = PhotoImage(file='icons/language_icons/logo_sql.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
-        elif  language_name == ".yml" or language_name == ".eyaml" or language_name == ".eyml" or language_name == ".yaml":
+        elif language_name == ".yml" or language_name == ".eyaml" or language_name == ".eyml" or language_name == ".yaml":
             icon = PhotoImage(file='icons/language_icons/logo_yaml.png')
             self.root.call('wm', 'iconphoto', self.root, icon)
 
@@ -301,30 +324,43 @@ class File():  # File menu
         pdf.set_font("Arial", "", 16)
         content = self.text.get(0.0, END)
         pdf.multi_cell(0, 5, content)
-
         pdf.ln()
-        pdf.output(asksaveasfilename(defaultextension=".pdf",filetypes=[("PDF file", "*.pdf")]), "F")
-            
-    def quit(self, *args):
-        entry = askokcancel('Confirm exit', "Sure you want to Quit?")
-        if entry == True:
-            self.root.destroy()
+        pdf.output(asksaveasfilename(defaultextension=".pdf",
+                   filetypes=[("PDF file", "*.pdf")]), "F")
 
+    def quit(self, *args):
+        if self.saved == 1:
+            entry = askyesnocancel('File not saved', "You want to save?")
+            if entry == True:
+                self.saveFile()
+            elif entry == False:
+                self.root.destroy()
+            else:
+                pass
+        else:
+            entry = askokcancel('Confirm exit', "Sure you want to Quit?")
+            if entry == True:
+                self.root.destroy()
 
     def __init__(self, text, root, status_bar):
         self.filename = None
         self.text = text
         self.root = root
+        self.saved = 0
         self.status_bar = status_bar
 
-    
+    def changed(self, *args):
+        self.saved = 1
+        self.root.title("Notepy - " + self.filename + "*")
+
+
 def main(root, text, menubar, status_bar):
 
     filemenu = Menu(menubar, tearoff=False)  # File menu gui
     objFile = File(text, root, status_bar)
 
     filemenu.add_command(label=" New", command=objFile.newFile)
-    filemenu.add_command(label=" Open ",command=objFile.openFile)
+    filemenu.add_command(label=" Open ", command=objFile.openFile)
     filemenu.add_command(label=" Save ", command=objFile.saveFile)
     filemenu.add_command(label=" Save As ", command=objFile.saveAs)
 
@@ -345,6 +381,9 @@ def main(root, text, menubar, status_bar):
     root.bind_all("<Control-s>", objFile.saveFile)
     root.bind_all("<Control-q>", objFile.quit)
 
+    text.bind("<<Modified>>", objFile.changed)
+
 
 if __name__ == "__main__":
     messagebox.showerror("Eror", "Please run 'main.py'")
+
