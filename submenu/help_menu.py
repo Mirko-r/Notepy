@@ -21,8 +21,16 @@ class Help():
                 "Os: " + platform.system() + "\n" + 
                 "Python Version: " + sys.version + "\n"
             )
-        except:
-            messagebox.showerror("Error", "Sometings went wrong\nTry later ")
+        except requests.exceptions.Timeout as err:
+            messagebox.showerror("Error", err)
+        except requests.exceptions.TooManyRedirects as err:
+            messagebox.showerror("Error", err)
+        except requests.exceptions.RequestException as err:
+            messagebox.showerror("Error", err)
+        except requests.exceptions.HTTPError as err:
+            messagebox.showerror("Error", err)
+        except requests.exceptions.InvalidURL as err:
+            messagebox.showerror("Error", err)
 
     def keyb_short():
         messagebox.showinfo(
@@ -36,9 +44,19 @@ class Help():
     def release():
         try:
             webbrowser.open("https://mirko-r.github.io/notepy/docs/changelog.html")
-        except webbrowser.Error:
-            messagebox.showerror("Error", "Something went wrong when opening webbrowser")
+        except webbrowser.Error as err:
+            messagebox.showerror("Error", err)
 
+        """
+        Bugfix
+        Better compatibilty with Linux system
+        Add check if number is palindrome on Revision menu
+        Add new font sizes
+        Now notepy start with monospace font
+        Remove count words anche dount chars from Revision menu
+        Now status bar display words, chars ane line
+        Add unsaved file control
+        """
     def license():
 
         root = Tk()
@@ -61,16 +79,15 @@ class Help():
 
     def term_help():
 
-        root = Tk()
-        root.title("Help terminal command")
+        if "nt" == os.name:
+            root = Tk()
+            root.title("Help terminal command")
         
-        if "nt" == os.name:
-            root.wm_iconbitmap(bitmap = "./icons/help.ico")
-        else:
-            root.wm_iconbitmap(bitmap = "@./icons/help.xbm")
-        v = Scrollbar(root)
-
-        if "nt" == os.name:
+            if "nt" == os.name:
+                root.wm_iconbitmap(bitmap = "./icons/help.ico")
+            else:
+                root.wm_iconbitmap(bitmap = "@./icons/help.xbm")
+            v = Scrollbar(root)
             v.pack(side = RIGHT, fill = Y)
           
             t = Text(root, width = 120, height = 25, wrap = NONE,
@@ -85,7 +102,7 @@ class Help():
   
             root.mainloop()
         else:
-            messagebox.showinfo("Help terminal command", "The help for your system is not already available")
+            messagebox.showinfo("Help terminal command", "Terminal command list is not available")
 
 
 def main(root, menubar):
@@ -102,4 +119,4 @@ def main(root, menubar):
 
 
 if __name__ == "__main__":
-    messagebox.showerror("Error", "Please run 'main.py'")
+    messagebox.showerror("Eror", "Please run 'main.py'")
