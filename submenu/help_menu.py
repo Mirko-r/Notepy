@@ -1,19 +1,28 @@
 from tkinter import messagebox
 from tkinter import *
+from datetime import datetime
 import webbrowser
 import platform
 import sys
 import os
+import requests
 
 class Help():
     def showAbout():
-        messagebox.showinfo(
-            "About Notepy",
-            "Notepy Version: 4.0\n" +
-            "Date of Release: xx/xx/xxxx\n"
-            "Os: " + platform.system() + "\n" + 
-            "Python Version: " + sys.version + "\n"
-        )
+        try:
+            response = requests.get("https://api.github.com/repos/Mirko-r/Notepy/releases/tags/3.5")
+            date = response.json()["published_at"]
+            datetimeobject = datetime.strptime(date, "%Y-%m-%dT%H:%M:%SZ")
+            version = response.json()["tag_name"]
+            messagebox.showinfo(
+                "About Notepy",
+                "Notepy Version: " + version + "\n" +
+                "Date of Release: " + str(datetimeobject) + "\n"+
+                "Os: " + platform.system() + "\n" + 
+                "Python Version: " + sys.version + "\n"
+            )
+        except:
+            messagebox.showerror("Error", "Sometings went wrong\nTry later ")
 
     def keyb_short():
         messagebox.showinfo(
@@ -25,15 +34,11 @@ class Help():
         )
 
     def release():
-        webbrowser.open("https://mirko-r.github.io/notepy/docs/changelog.html")
-        """
-        Bugfix
-        Better compatibilty with Linux system
-        Add check if number is palindrome on Revision menu
-        Add a module that display the current position of cursor in line and column
-        Add new font sizes
-        Now notepy start with monospace font
-        """
+        try:
+            webbrowser.open("https://mirko-r.github.io/notepy/docs/changelog.html")
+        except webbrowser.Error:
+            messagebox.showerror("Error", "Something went wrong when opening webbrowser")
+
     def license():
 
         root = Tk()
@@ -64,20 +69,23 @@ class Help():
         else:
             root.wm_iconbitmap(bitmap = "@./icons/help.xbm")
         v = Scrollbar(root)
-  
-        v.pack(side = RIGHT, fill = Y)
+
+        if "nt" == os.name:
+            v.pack(side = RIGHT, fill = Y)
           
-        t = Text(root, width = 120, height = 25, wrap = NONE,
-                 yscrollcommand = v.set)
+            t = Text(root, width = 120, height = 25, wrap = NONE,
+                    yscrollcommand = v.set)
 
-        f = open('submenu/terminal/term_command.txt','r').read()
-        t.insert(END, f)
+            f = open('submenu/terminal/term_command.txt','r').read()
+            t.insert(END, f)
 
-        t.pack(side=TOP, fill=X)
+            t.pack(side=TOP, fill=X)
   
-        v.config(command=t.yview)
+            v.config(command=t.yview)
   
-        root.mainloop()
+            root.mainloop()
+        else:
+            messagebox.showinfo("Help terminal command", "The help for your system is not already available")
 
 
 def main(root, menubar):
@@ -94,4 +102,4 @@ def main(root, menubar):
 
 
 if __name__ == "__main__":
-    messagebox.showerror("Eror", "Please run 'main.py'")
+    messagebox.showerror("Error", "Please run 'main.py'")
