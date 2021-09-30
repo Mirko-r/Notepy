@@ -383,6 +383,7 @@ def main(root, text, menubar, status_bar):
 
     text.bind("<<Modified>>", objFile.changed)
 
+    root.protocol("WM_DELETE_WINDOW", objFile.quit)
 
 if __name__ == "__main__":
     messagebox.showerror("Eror", "Please run 'main.py'")
