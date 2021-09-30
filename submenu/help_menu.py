@@ -10,7 +10,7 @@ import requests
 class Help():
     def showAbout():
         try:
-            response = requests.get("https://api.github.com/repos/Mirko-r/Notepy/releases/tags/3.5")
+            response = requests.get("https://api.github.com/repos/Mirko-r/Notepy/releases/tags/4.0")
             date = response.json()["published_at"]
             datetimeobject = datetime.strptime(date, "%Y-%m-%dT%H:%M:%SZ")
             version = response.json()["tag_name"]
