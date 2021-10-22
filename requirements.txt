@@ -1,6 +1,6 @@
 DateTime==4.3
 readtime==1.1.1
-textblob==0.15.3
+textblob==0.17.1
 num2words==0.5.10
 PySide2==5.15.2
 fpdf==1.7.2
