@@ -47,6 +47,10 @@ python3 notepy.py
 - More coding functionalities
 - Better GUI
 
+## 💲Support my work
+
+[![paypal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/stupidamentepod)
+
 ## License
 
 Copyright (c) Mirko Rovere. All right Reserved.
