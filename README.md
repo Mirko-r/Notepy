@@ -15,7 +15,7 @@
 ```shell
 git clone https://github.com/Mirko-r/Notepy && cd Notepy
 pip install -r requirements.txt
-python3 notepy.py
+python notepy.py
 ```
 
 ### Ubuntu/Debian
@@ -24,7 +24,7 @@ python3 notepy.py
 sudo apt-get install python3 python3-tk idle3  
 git clone https://github.com/Mirko-r/Notepy && cd Notepy
 pip install -r requirements.txt
-python3 notepy.py
+python notepy.py
 ```
 
 
