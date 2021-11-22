@@ -6,6 +6,7 @@ import platform
 import sys
 import os
 import requests
+import base64
 
 class Help():
     def showAbout():
@@ -48,34 +49,22 @@ class Help():
             messagebox.showerror("Error", err)
 
         """
-        Bugfix
-        Better compatibilty with Linux system
-        Add check if number is palindrome on Revision menu
-        Add new font sizes
-        Now notepy start with monospace font
-        Remove count words anche dount chars from Revision menu
-        Now status bar display words, chars ane line
-        Add unsaved file control
+
         """
     def license():
-
-        root = Tk()
-        root.title("Notepy license")
-
-        if "nt" == os.name:
-            root.wm_iconbitmap(bitmap = "./icons/license.ico")
-        else:
-            root.wm_iconbitmap(bitmap = "@./icons/license.xbm")
-          
-        t = Text(root, width = 80, height = 25, wrap = NONE)
-
-        f = open('submenu/license/LICENSE.txt','r').read()
-        t.insert(END, f)
-
-        t.pack(side=TOP, fill=X)
-  
-  
-        root.mainloop()
+        try:
+            req = requests.get("https://api.github.com/repos/Mirko-r/Notepy/contents/LICENSE").json()["content"]
+            messagebox.showinfo("License", base64.b64decode(req.encode('ascii')).decode('ascii'))
+        except requests.exceptions.Timeout as err:
+            messagebox.showerror("Error", err)
+        except requests.exceptions.TooManyRedirects as err:
+            messagebox.showerror("Error", err)
+        except requests.exceptions.RequestException as err:
+            messagebox.showerror("Error", err)
+        except requests.exceptions.HTTPError as err:
+            messagebox.showerror("Error", err)
+        except requests.exceptions.InvalidURL as err:
+            messagebox.showerror("Error", err)
 
     def term_help():
 
