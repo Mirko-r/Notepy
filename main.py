@@ -25,9 +25,9 @@ class Text(tk.Frame):
         self.loader = Loaders()
         self.operating_system = system()
         if "nt" == os.name:
-            master.wm_iconbitmap(bitmap = "./data/icons/notepy.ico")
+            master.wm_iconbitmap(bitmap = "./icons/notepy.ico")
         else:
-            master.wm_iconbitmap(bitmap = "@./data/icons/notepy.xbm")
+            master.wm_iconbitmap(bitmap = "@./icons/notepy.xbm")
 
         # start editor according to defined settings in settings.yaml
         self.settings = self.loader.load_settings_data()
@@ -414,30 +414,46 @@ class Text(tk.Frame):
             if self.filename[-4:] == '.txt' or self.filename[-3:] == '.md':
                 self.syntax_highlighter.syntax_and_themes.load_markdown_syntax()
             elif self.filename[-2:] == '.c':
+                icon = tk.PhotoImage(file='./icons/language_icons/logo_c.png')
+                master.iconphoto(False, icon)
                 self.syntax_highlighter.syntax_and_themes.load_c_syntax()
             elif self.filename[-2:] == '.coffee':
                 self.syntax_highlighter.syntax_and_themes.load_coffeescript_syntax()
             elif self.filename[-5:] == '.dart':
                 self.syntax_highlighter.syntax_and_themes.load_dart_syntax()
             elif self.filename[-3:] == '.py':
+                icon = tk.PhotoImage(file='./icons/language_icons/logo_python.png')
+                master.iconphoto(False, icon)
                 self.syntax_highlighter.syntax_and_themes.load_python3_syntax()
             elif self.filename[-3:] == '.js':
+                icon = tk.PhotoImage(file='./icons/language_icons/logo_javascript.png')
+                master.iconphoto(False, icon)
                 self.syntax_highlighter.syntax_and_themes.load_javascript_syntax()
             elif self.filename[-5:] == '.java':
+                icon = tk.PhotoImage(file='./icons/language_icons/logo_java.png')
+                master.iconphoto(False, icon)
                 self.syntax_highlighter.syntax_and_themes.load_java_syntax()
             elif self.filename[-3:] == '.hs':
                 self.syntax_highlighter.syntax_and_themes.load_haskell_syntax()
             elif self.filename[-5:] == '.html':
+                icon = tk.PhotoImage(file='./icons/language_icons/logo_html.png')
+                master.iconphoto(False, icon)
                 self.syntax_highlighter.syntax_and_themes.load_html_syntax()
             elif self.filename[-4:] == '.css':
+                icon = tk.PhotoImage(file='./icons/language_icons/logo_css.png')
+                master.iconphoto(False, icon)
                 self.syntax_highlighter.syntax_and_themes.load_css_syntax()
             elif self.filename[-4:] == '.cpp':
+                icon = tk.PhotoImage(file='./icons/language_icons/logo_cpp.png')
+                master.iconphoto(False, icon)
                 self.syntax_highlighter.syntax_and_themes.load_cpp_syntax()
             elif self.filename[-3:] == '.go':
                 self.syntax_highlighter.syntax_and_themes.load_go_syntax()
             elif self.filename[-3:] == '.rs':
                 self.syntax_highlighter.syntax_and_themes.load_rust_syntax()
             elif self.filename[-4:] == '.sql':
+                icon = tk.PhotoImage(file='./icons/language_icons/logo_sql.png')
+                master.iconphoto(False, icon)
                 self.syntax_highlighter.syntax_and_themes.load_sql_syntax()
             elif self.filename[-5:] == '.yaml':
                 self.syntax_highlighter.syntax_and_themes.load_yaml_syntax()
@@ -446,6 +462,8 @@ class Text(tk.Frame):
             elif self.filename[-10:] == 'Dockerfile':
                 self.syntax_highlighter.syntax_and_themes.load_docker_syntax()
             elif self.filename[-4:] == '.nim':
+                icon = tk.PhotoImage(file='./icons/language_icons/logo_nim.png')
+                master.iconphoto(False, icon)
                 self.syntax_highlighter.syntax_and_themes.load_nim_syntax()
 
     # opening an existing file in the editor

@@ -31,6 +31,8 @@ class SyntaxAndThemes:
 				os.path.join('data', 'theme_configs/desert.yaml'))
 			self.rust_theme_path = master.parent.loader.resource_path(
 				os.path.join('data', 'theme_configs/rust.yaml'))
+			self.tokyo_night_path = master.parent.loader.resource_path(
+				os.path.join('data', 'theme_configs/tokyo_night.yaml'))
 
 			self.default_theme_path = self.rust_theme_path
 
@@ -69,6 +71,9 @@ class SyntaxAndThemes:
 
 		def load_desert(self):
 			self.master.load_new_theme(self.desert_theme_path)
+
+		def load_tokyo(self):
+			self.master.load_new_theme(self.tokyo_night_path)
 
 		def load_batch_syntax(self):
 			self.master.lexer = BatchLexer()

@@ -148,6 +148,9 @@ class Menubar():
         theme_dropdown.add_command(
           label='Solarized',
           command=self.syntax.syntax_and_themes.load_solarized)
+        theme_dropdown.add_command(
+          label='Tokyo night',
+          command=self.syntax.syntax_and_themes.load_tokyo)
 
         syntax_dropdown = tk.Menu(menubar, font=font_specs, tearoff=0)
         
