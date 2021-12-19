@@ -6,7 +6,7 @@
 
 ---
 
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Mirko-r/Notepy) ![GitHub issues](https://img.shields.io/github/issues/Mirko-r/Notepy) ![GitHub](https://img.shields.io/github/license/Mirko-r/Notepy) ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/Mirko-r/Notepy?style=plastic) ![Website](https://img.shields.io/website?url=https%3A%2F%2Fmirko-r.github.io%2Fnotepy%2F) ![GitHub last commit](https://img.shields.io/github/last-commit/Mirko-r/Notepy) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Mirko-r/Notepy/CodeQL) ![GitHub all releases](https://img.shields.io/github/downloads/Mirko-r/Notepy/total) ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Mirko-r/Notepy) ![GitHub Repo stars](https://img.shields.io/github/stars/Mirko-r/Notepy?style=social) ![GitHub forks](https://img.shields.io/github/forks/Mirko-r/Notepy?style=social)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Mirko-r/Notepy) ![GitHub issues](https://img.shields.io/github/issues/Mirko-r/Notepy) ![GitHub](https://img.shields.io/github/license/Mirko-r/Notepy) ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/Mirko-r/Notepy?style=plastic) ![Website](https://img.shields.io/website?url=https%3A%2F%2Fmirko-r.github.io%2Fnotepy%2F) ![GitHub last commit](https://img.shields.io/github/last-commit/Mirko-r/Notepy) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Mirko-r/Notepy/CodeQL) ![GitHub all releases](https://img.shields.io/github/downloads/Mirko-r/Notepy/total) ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Mirko-r/Notepy) 
 
 ---
 
@@ -18,6 +18,8 @@
 - Compile and run from editor
 - Themes
 - Customization option
+
+---
 
 ## Keyboard Shortcuts
 
@@ -45,6 +47,8 @@
 | Indent | <kbd>tab</kbd> | Indent one or multiple lines |
 | Unindent | <kbd>shift</kbd>+<kbd>tab</kbd> | Unindent one or multiple lines |
 
+---
+
 ## Setup
 
 ```shell
@@ -56,7 +60,7 @@ python notepy.py
 ### Ubuntu/Debian
 
 ```shell
-sudo apt-get install python3 python3-tk idle3  
+sudo apt-get install python3 python3-tk   
 git clone https://github.com/Mirko-r/Notepy && cd Notepy
 pip install -r requirements.txt
 python notepy.py
@@ -64,6 +68,8 @@ python notepy.py
 
 
 **You can also download Notepy from the** [Release page](https://github.com/Mirko-r/Notepy/releases)
+
+---
 
 ## Security Policy
 
