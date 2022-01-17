@@ -6,7 +6,7 @@
 
 ---
 
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Mirko-r/Notepy) ![GitHub issues](https://img.shields.io/github/issues/Mirko-r/Notepy) ![GitHub](https://img.shields.io/github/license/Mirko-r/Notepy) ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/Mirko-r/Notepy?style=plastic) ![Website](https://img.shields.io/website?url=https%3A%2F%2Fmirko-r.github.io%2Fnotepy%2F) ![GitHub last commit](https://img.shields.io/github/last-commit/Mirko-r/Notepy) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Mirko-r/Notepy/CodeQL) ![GitHub all releases](https://img.shields.io/github/downloads/Mirko-r/Notepy/total) ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Mirko-r/Notepy) 
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Mirko-r/Notepy) ![GitHub issues](https://img.shields.io/github/issues/Mirko-r/Notepy) ![GitHub](https://img.shields.io/github/license/Mirko-r/Notepy) ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/Mirko-r/Notepy?style=plastic) ![Website](https://img.shields.io/website?url=https%3A%2F%2Fmirko-r.github.io%2FNotepy%2F) ![GitHub last commit](https://img.shields.io/github/last-commit/Mirko-r/Notepy) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Mirko-r/Notepy/CodeQL) ![GitHub all releases](https://img.shields.io/github/downloads/Mirko-r/Notepy/total) ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Mirko-r/Notepy) 
 
 ---
 
