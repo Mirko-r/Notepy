@@ -2,7 +2,7 @@
 
 ## A full featured python text-editor
 
-![Notepy](https://github.com/Mirko-r/Notepy/raw/main/data/Notepy.jpg)
+![Notepy](https://github.com/Mirko-r/Notepy/raw/main/img/Notepy.jpg)
 
 ---
 
